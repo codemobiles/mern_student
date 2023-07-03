@@ -14,9 +14,16 @@ const formValidateSchema = Yup.object().shape({
     .trim(),
   password: Yup.string().required("Password is required").trim(),
 });
+
 export default function LoginPage() {
-  const { control, handleSubmit } = useForm<User>({
+  // Hook form
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<User>({
     defaultValues: initialValue,
+    resolver: yupResolver(formValidateSchema),
   });
 
   const submit = (values: User) => {
