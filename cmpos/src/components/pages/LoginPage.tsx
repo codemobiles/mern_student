@@ -1,11 +1,20 @@
-import { User } from "@/types/user.type";
-import { Box, Button, Card, TextField, Typography } from "@mui/material";
-import { useState } from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as Yup from "yup";
-import { Controller, useForm } from "react-hook-form";
+import loginBg from "@/assets/images/bg4.jpg";
 
-const initialValue: User = { username: "", password: "" };
+import { User } from "@/types/user.type";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Icons from "@mui/icons-material/";
+import { Box, InputAdornment } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import { Controller, useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+
 const formValidateSchema = Yup.object().shape({
   // username: Yup.string().email("Invalid email address").required("Email is required").trim(),
   username: Yup.string()
@@ -15,8 +24,16 @@ const formValidateSchema = Yup.object().shape({
   password: Yup.string().required("Password is required").trim(),
 });
 
-export default function LoginPage() {
-  // Hook form
+const Login = () => {
+  const navigate = useNavigate();
+
+  const classes: any = {
+    root: { display: "flex", justifyContent: "center", alignItems: "center" },
+    submitBtn: { marginTop: 4 },
+    canelBtn: { marginTop: 2 },
+  };
+
+  const initialValue: User = { username: "admin", password: "1234" };
   const {
     control,
     handleSubmit,
@@ -26,55 +43,112 @@ export default function LoginPage() {
     resolver: yupResolver(formValidateSchema),
   });
 
-  const submit = (values: User) => {
-    alert(JSON.stringify(values));
+  const onSubmit = async (values: User) => {};
+
+  const showForm = () => {
+    return (
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="username"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              error={Boolean(errors.username?.message)}
+              helperText={errors.username?.message}
+              {...field}
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              label="Username"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Icons.Email />
+                  </InputAdornment>
+                ),
+              }}
+              autoComplete="email"
+              autoFocus
+            />
+          )}
+        ></Controller>
+
+        <Controller
+          name="password"
+          control={control}
+          render={({ field }) => (
+            <TextField
+              helperText={errors.password?.message}
+              error={Boolean(errors.password?.message)}
+              {...field}
+              variant="outlined"
+              margin="normal"
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Icons.Password />
+                  </InputAdornment>
+                ),
+              }}
+              label="Password"
+              type="password"
+            />
+          )}
+        ></Controller>
+
+        <Button
+          sx={classes.submitBtn}
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+        >
+          Login
+        </Button>
+
+        <Button
+          sx={{ marginTop: 2 }}
+          onClick={() => {
+            navigate("/register");
+          }}
+          type="button"
+          fullWidth
+          variant="outlined"
+          className="border-dashed border-1 border-gray-300"
+          color="primary"
+        >
+          Register
+        </Button>
+      </form>
+    );
   };
 
   return (
-    <Box>
-      <Card elevation={10} className="p-5">
-        <Typography variant="h4" className="!mb-3">
-          Login
-        </Typography>
-        <form onSubmit={handleSubmit(submit)}>
-          {/* Username */}
-          <Controller
-            control={control}
-            name="username"
-            render={({ field }) => (
-              <TextField
-                fullWidth
-                label="Username"
-                {...field}
-                helperText={errors.username?.message?.toString()}
-                error={Boolean(errors.username?.message)}
-              />
-            )}
-          />
+    <Box sx={classes.root}>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardContent>
+          <Typography gutterBottom variant="h5">
+            Login
+          </Typography>
 
-          <div className="h-5"></div>
-
-          {/* Password */}
-          <Controller
-            control={control}
-            name="password"
-            render={({ field }) => (
-              <TextField
-                fullWidth
-                label="Password"
-                {...field}
-                helperText={errors.password?.message?.toString()}
-                error={Boolean(errors.password?.message)}
-              />
-            )}
-          />
-
-          <div className="h-2"></div>
-          <Button type="submit" fullWidth variant="contained">
-            Submit
-          </Button>
-        </form>
+          {showForm()}
+        </CardContent>
       </Card>
+      <style>
+        {`
+          body {
+            min-height: 100vh;
+            position: relative;
+            margin: 0;
+            background-size: cover;
+            background-image: url(${loginBg});
+            text-align: center;
+          }
+        `}
+      </style>
     </Box>
   );
-}
+};
+
+export default Login;
