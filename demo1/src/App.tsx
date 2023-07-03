@@ -9,7 +9,7 @@ export default function App() {
   // Explicit Declaration
   let count: number = 0; // none side effect variables
 
-  const [score, setScore] = React.useState(); // side effect variables
+  const [score, setScore] = React.useState(0); // side effect variables
 
   function MyBox() {
     return <div>MyBox</div>;
@@ -31,6 +31,7 @@ export default function App() {
           <li>{subtitle}</li>
           <li>{version}</li>
           <li>{count}</li>
+          <li>{score}</li>
         </ul>
       </div>
     );
@@ -49,6 +50,13 @@ export default function App() {
         }}
       >
         ClickMe
+      </button>
+      <button
+        onClick={() => {
+          setScore(score + 1);
+        }}
+      >
+        Add Score
       </button>
     </div>
   );
