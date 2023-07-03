@@ -8,13 +8,14 @@ export default function App() {
   }
 
   // Component
-  const AnotherBox = (props: { title: string; subtitle: string }) => {
+  type AnotherBoxProps = { title: string; subtitle: string };
+  const AnotherBox = ({ title, subtitle }: AnotherBoxProps) => {
     return (
       <div>
         Another Box:
         <ul>
-          <li>{props.title}</li>
-          <li>{props.subtitle}</li>
+          <li>{title}</li>
+          <li>{subtitle}</li>
         </ul>
       </div>
     );
