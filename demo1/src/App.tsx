@@ -9,3 +9,7 @@ export default function App() {
     </div>
   );
 }
+
+function MyBox() {
+  return <div>MyBox</div>;
+}
