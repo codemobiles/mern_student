@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function App() {
   // Implicit Declaration
@@ -9,7 +9,8 @@ export default function App() {
   // Explicit Declaration
   let count: number = 0; // none side effect variables
 
-  const [score, setScore] = React.useState(0); // side effect variables
+  // const [score, setScore] = React.useState(0); // side effect variables
+  const [score, setScore] = useState(0);
 
   function MyBox() {
     return <div>MyBox</div>;

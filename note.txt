@@ -3,3 +3,14 @@
 
 # master project and document
 - https://drive.google.com/file/d/1a2Iqbbxfywm2MnpilNGnvA6JJU-77B40/view?usp=sharing
+
+
+- npm i == yarn
+- npm create vite@latest 
+- yarn create vite
+- code demo1
+- yarn dev
+- yarn (restore)
+- tsrfc
+- cmd+p (search file)
+- cmd+shift+p (code pallate)
