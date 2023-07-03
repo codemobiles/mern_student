@@ -21,11 +21,18 @@ export default function LoginPage() {
           Login
         </Typography>
         <form onSubmit={() => alert(JSON.stringify(user))}>
-          <TextField
-            fullWidth
-            label="Username"
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
+          <Controller
+            control={control}
+            name="username"
+            render={({ field }) => (
+              <TextField
+                fullWidth
+                label="Username"
+                onChange={(e) => setUser({ ...user, username: e.target.value })}
+              />
+            )}
           />
+
           <div className="h-2"></div>
           <TextField
             fullWidth
