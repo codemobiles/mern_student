@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "@/components/layouts/Header";
 import Menu from "@/components/layouts/Menu";
+import logo from "@/assets/images/cm_logo.png";
 
 const drawerWidth = 240;
 
@@ -54,6 +55,9 @@ export default function PersistentDrawerLeft() {
       <Main open={open}>
         <DrawerHeader />
         <span>Content is here</span>
+        <div>
+          <img src={logo} alt="" />
+        </div>
       </Main>
     </Box>
   );
