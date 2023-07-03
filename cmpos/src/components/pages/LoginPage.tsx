@@ -5,14 +5,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 
-const initialValue: User = { username: "admin", password: "1234" };
+const initialValue: User = { username: "", password: "" };
 
 export default function LoginPage() {
-  const [user, setUser] = useState<User>({ username: "", password: "" });
-
-  const { control } = useForm<User>({
+  const { control, handleSubmit } = useForm<User>({
     defaultValues: initialValue,
   });
+
+  const submit = (values: User) => {
+    alert(JSON.stringify(values));
+  };
 
   return (
     <Box>
@@ -20,7 +22,7 @@ export default function LoginPage() {
         <Typography variant="h4" className="!mb-3">
           Login
         </Typography>
-        <form onSubmit={() => alert(JSON.stringify(user))}>
+        <form onSubmit={handleSubmit(submit)}>
           {/* Username */}
           <Controller
             control={control}
