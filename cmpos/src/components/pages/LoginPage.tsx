@@ -11,12 +11,16 @@ export default function LoginPage() {
         <Typography variant="h4" className="!mb-3">
           Login
         </Typography>
-        <form>
-          <TextField fullWidth label="Username" />
+        <form onSubmit={() => alert("Submit")}>
+          <TextField
+            fullWidth
+            label="Username"
+            onChange={(e) => console.log(e.target.value)}
+          />
           <div className="h-2"></div>
           <TextField fullWidth label="Password" />
           <div className="h-2"></div>
-          <Button fullWidth variant="contained">
+          <Button type="submit" fullWidth variant="contained">
             Submit
           </Button>
         </form>
