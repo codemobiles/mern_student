@@ -1,4 +1,5 @@
 import React from "react";
+import BasicButtons from "./DemoButtons";
 
 type Props = {};
 
@@ -9,6 +10,7 @@ export default function App({}: Props) {
       <div className="text-orange-500 bg-black w-10 rounded-md text-center p-6 m-3">
         Hey
       </div>
+      <BasicButtons />
     </div>
   );
 }
