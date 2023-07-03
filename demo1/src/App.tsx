@@ -8,15 +8,23 @@ export default function App() {
   }
 
   // Component
-  const AnotherBox = (props: any) => {
-    return <div>Another Box: {props.title}</div>;
+  const AnotherBox = (props: { title: string; subtitle: string }) => {
+    return (
+      <div>
+        Another Box:
+        <ul>
+          <li>{props.title}</li>
+          <li>{props.subtitle}</li>
+        </ul>
+      </div>
+    );
   };
 
   return (
     <div>
       App {tmp1}, {tmp2}, {tmp3 ? "Yes" : "No"}
       <MyBox />
-      <AnotherBox title="Lek" />
+      <AnotherBox title="Lek" subtitle="555" />
     </div>
   );
 }
