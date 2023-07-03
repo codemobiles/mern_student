@@ -6,7 +6,9 @@ import Header from "@/components/layouts/Header";
 import Menu from "@/components/layouts/Menu";
 import logo from "@/assets/images/cm_logo.png";
 import { Container } from "@mui/material";
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./components/pages/LoginPage";
+import RegisterPage from "./components/pages/RegisterPage";
 
 const drawerWidth = 240;
 
@@ -58,7 +60,8 @@ export default function PersistentDrawerLeft() {
         <Container>
           <DrawerHeader />
           <Routes>
-            
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </Container>
       </Main>
