@@ -6,7 +6,14 @@ import * as Yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 
 const initialValue: User = { username: "", password: "" };
-
+const formValidateSchema = Yup.object().shape({
+  // username: Yup.string().email("Invalid email address").required("Email is required").trim(),
+  username: Yup.string()
+    .min(4)
+    .required("Username must be more than 3 letters")
+    .trim(),
+  password: Yup.string().required("Password is required").trim(),
+});
 export default function LoginPage() {
   const { control, handleSubmit } = useForm<User>({
     defaultValues: initialValue,
@@ -28,11 +35,17 @@ export default function LoginPage() {
             control={control}
             name="username"
             render={({ field }) => (
-              <TextField fullWidth label="Username" {...field} />
+              <TextField
+                fullWidth
+                label="Username"
+                {...field}
+                helperText="Error"
+                error
+              />
             )}
           />
 
-          <div className="h-2"></div>
+          <div className="h-5"></div>
 
           {/* Password */}
           <Controller
