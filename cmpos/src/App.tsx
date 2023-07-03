@@ -6,7 +6,7 @@ import Header from "@/components/layouts/Header";
 import Menu from "@/components/layouts/Menu";
 import logo from "@/assets/images/cm_logo.png";
 import { Container } from "@mui/material";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 
@@ -60,6 +60,7 @@ export default function PersistentDrawerLeft() {
         <Container>
           <DrawerHeader />
           <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>
