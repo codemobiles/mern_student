@@ -46,8 +46,8 @@ export default function LoginPage() {
                 fullWidth
                 label="Username"
                 {...field}
-                helperText="Error"
-                error
+                helperText={errors.username?.message?.toString()}
+                error={Boolean(errors.username?.message)}
               />
             )}
           />
@@ -59,7 +59,13 @@ export default function LoginPage() {
             control={control}
             name="password"
             render={({ field }) => (
-              <TextField fullWidth label="Password" {...field} />
+              <TextField
+                fullWidth
+                label="Password"
+                {...field}
+                helperText={errors.password?.message?.toString()}
+                error={Boolean(errors.password?.message)}
+              />
             )}
           />
 
