@@ -1,6 +1,10 @@
+import { User } from "@/types/user.type";
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function LoginPage() {
+  const [user, setUser] = useState<User>({ username: "", password: "" });
+
   return (
     <Box>
       <Card elevation={10} className="p-5">
