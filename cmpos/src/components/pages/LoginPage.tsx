@@ -11,7 +11,7 @@ export default function LoginPage() {
         <Typography variant="h4" className="!mb-3">
           Login
         </Typography>
-        <form onSubmit={() => alert("Submit")}>
+        <form onSubmit={() => alert(JSON.stringify(user))}>
           <TextField
             fullWidth
             label="Username"
@@ -24,7 +24,6 @@ export default function LoginPage() {
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />
           <div className="h-2"></div>
-          <span>#Spy: {JSON.stringify(user)}</span>
           <Button type="submit" fullWidth variant="contained">
             Submit
           </Button>
