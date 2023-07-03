@@ -5,6 +5,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Header from "@/components/layouts/Header";
 import Menu from "@/components/layouts/Menu";
 import logo from "@/assets/images/cm_logo.png";
+import { Container } from "@mui/material";
+import { Routes } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -53,11 +55,12 @@ export default function PersistentDrawerLeft() {
       <Header open={open} handleDrawerOpen={handleDrawerOpen} />
       <Menu open={open} handleDrawerClose={handleDrawerClose} />
       <Main open={open}>
-        <DrawerHeader />
-        <span>Content is here</span>
-        <div>
-          <img src={logo} alt="" />
-        </div>
+        <Container>
+          <DrawerHeader />
+          <Routes>
+            
+          </Routes>
+        </Container>
       </Main>
     </Box>
   );
