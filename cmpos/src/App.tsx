@@ -1,5 +1,5 @@
 import React from "react";
-import BasicButtons from "./components/fragments/DemoButtons";
+import BasicButtons from "@/components/fragments/DemoButtons";
 
 type Props = {};
 

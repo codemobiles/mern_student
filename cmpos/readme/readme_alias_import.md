@@ -13,9 +13,14 @@ resolve: {
 # update tsconfig.json
 
 ```
-"types": ["node", "vite/client"],
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["./src/*"]
-  }
+"baseUrl": "src",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["components/*"],
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"],
+      "@/store/*": ["store/*"],
+      "@/router/*": ["router/*"],
+      "@/assets/*": ["assets/*"]
+    }
 ```
