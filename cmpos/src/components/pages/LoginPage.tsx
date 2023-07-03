@@ -15,7 +15,9 @@ export default function LoginPage() {
           <TextField
             fullWidth
             label="Username"
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) =>
+              setUser({ username: e.target.value, password: user.password })
+            }
           />
           <div className="h-2"></div>
           <TextField fullWidth label="Password" />
