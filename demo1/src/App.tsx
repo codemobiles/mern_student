@@ -8,14 +8,20 @@ export default function App() {
   }
 
   // Component
-  type AnotherBoxProps = { title: string; subtitle: string };
-  const AnotherBox = ({ title, subtitle }: AnotherBoxProps) => {
+  type AnotherBoxProps = {
+    title: string;
+    subtitle: string;
+    version?: number;
+  };
+
+  const AnotherBox = ({ title, subtitle, version }: AnotherBoxProps) => {
     return (
       <div>
         Another Box:
         <ul>
           <li>{title}</li>
           <li>{subtitle}</li>
+          <li>{version}</li>
         </ul>
       </div>
     );
@@ -25,7 +31,7 @@ export default function App() {
     <div>
       App {tmp1}, {tmp2}, {tmp3 ? "Yes" : "No"}
       <MyBox />
-      <AnotherBox title="Lek" subtitle="555" />
+      <AnotherBox title="Lek" subtitle="555" version={10} />
     </div>
   );
 }
