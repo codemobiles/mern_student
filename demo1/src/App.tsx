@@ -1,7 +1,11 @@
 export default function App() {
+  // Implicit Declaration
   const tmp1 = "Hey";
   const tmp2 = 20;
   const tmp3 = true;
+
+  // Explicit Declaration
+  let count: number = 0;
 
   function MyBox() {
     return <div>MyBox</div>;
@@ -22,6 +26,7 @@ export default function App() {
           <li>{title}</li>
           <li>{subtitle}</li>
           <li>{version}</li>
+          <li>{count}</li>
         </ul>
       </div>
     );
