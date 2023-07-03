@@ -26,20 +26,21 @@ export default function LoginPage() {
             control={control}
             name="username"
             render={({ field }) => (
-              <TextField
-                fullWidth
-                label="Username"
-                onChange={(e) => setUser({ ...user, username: e.target.value })}
-              />
+              <TextField fullWidth label="Username" {...field} />
             )}
           />
 
           <div className="h-2"></div>
-          <TextField
-            fullWidth
-            label="Password"
-            onChange={(e) => setUser({ ...user, password: e.target.value })}
+
+          {/* Password */}
+          <Controller
+            control={control}
+            name="password"
+            render={({ field }) => (
+              <TextField fullWidth label="Password" {...field} />
+            )}
           />
+
           <div className="h-2"></div>
           <Button type="submit" fullWidth variant="contained">
             Submit
