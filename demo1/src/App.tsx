@@ -7,15 +7,16 @@ export default function App() {
     return <div>MyBox</div>;
   }
 
-  const AnotherBox = () => {
-    return <div>Another Box</div>;
+  // Component
+  const AnotherBox = (props: any) => {
+    return <div>Another Box: {props.title}</div>;
   };
 
   return (
     <div>
       App {tmp1}, {tmp2}, {tmp3 ? "Yes" : "No"}
       <MyBox />
-      <AnotherBox />
+      <AnotherBox title="Lek" />
     </div>
   );
 }
