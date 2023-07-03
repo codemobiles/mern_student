@@ -15,13 +15,16 @@ export default function LoginPage() {
           <TextField
             fullWidth
             label="Username"
-            onChange={(e) =>
-              setUser({ username: e.target.value, password: user.password })
-            }
+            onChange={(e) => setUser({ ...user, username: e.target.value })}
           />
           <div className="h-2"></div>
-          <TextField fullWidth label="Password" />
+          <TextField
+            fullWidth
+            label="Password"
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+          />
           <div className="h-2"></div>
+          <span>#Spy: {JSON.stringify(user)}</span>
           <Button type="submit" fullWidth variant="contained">
             Submit
           </Button>
