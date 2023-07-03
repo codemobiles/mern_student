@@ -6,6 +6,7 @@ export default function App() {
   return (
     <div>
       App {tmp1}, {tmp2}, {tmp3 ? "Yes" : "No"}
+      <MyBox />
     </div>
   );
 }
