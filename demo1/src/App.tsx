@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function App() {
   // Implicit Declaration
   const tmp1 = "Hey";
@@ -5,7 +7,9 @@ export default function App() {
   const tmp3 = true;
 
   // Explicit Declaration
-  let count: number = 0;
+  let count: number = 0; // none side effect variables
+
+  const [score, setScore] = React.useState(); // side effect variables
 
   function MyBox() {
     return <div>MyBox</div>;
