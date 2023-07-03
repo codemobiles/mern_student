@@ -32,6 +32,7 @@ export default function App() {
       App {tmp1}, {tmp2}, {tmp3 ? "Yes" : "No"}
       <MyBox />
       <AnotherBox title="Lek" subtitle="555" version={10} />
+      <button onClick={() => alert("Hey")}>ClickMe</button>
     </div>
   );
 }
