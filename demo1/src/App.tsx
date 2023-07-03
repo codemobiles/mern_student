@@ -32,12 +32,20 @@ export default function App() {
     );
   };
 
+  // MVVM;
   return (
     <div>
       App {tmp1}, {tmp2}, {tmp3 ? "Yes" : "No"}
       <MyBox />
       <AnotherBox title="Lek" subtitle="555" version={10} />
-      <button onClick={() => alert("Hey")}>ClickMe</button>
+      <button
+        onClick={() => {
+          count++;
+          console.log("Count: " + count);
+        }}
+      >
+        ClickMe
+      </button>
     </div>
   );
 }
