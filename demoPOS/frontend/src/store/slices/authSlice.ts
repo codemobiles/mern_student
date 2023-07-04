@@ -12,8 +12,16 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    add: (state) => {
+      state.count++;
+    },
+    remove: (state) => {
+      state.count--;
+    },
+  },
 });
 
 export default authSlice.reducer;
 export const authSelector = (state: RootState) => state.authReducer;
+export const { add, remove } = authSlice.actions;
