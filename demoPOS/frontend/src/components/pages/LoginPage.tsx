@@ -3,7 +3,7 @@ import loginBg from "@/assets/images/bg4.jpg";
 import { User } from "@/types/user.type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Icons from "@mui/icons-material/";
-import { Box, InputAdornment } from "@mui/material";
+import { Box, InputAdornment, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -113,6 +113,17 @@ const Login = () => {
         >
           Register
         </Button>
+
+        {/* Counter */}
+        <Stack direction="row" className="mt-5" justifyContent="space-between">
+          <Button variant="contained" className="w-[100px]">
+            Remove
+          </Button>
+          <Typography variant="h3">0</Typography>
+          <Button variant="contained" className="w-[100px]">
+            Add
+          </Button>
+        </Stack>
       </form>
     );
   };
