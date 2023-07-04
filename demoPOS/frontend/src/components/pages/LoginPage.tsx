@@ -12,13 +12,11 @@ import Typography from "@mui/material/Typography";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import axios from "axios";
 
 const formValidateSchema = Yup.object().shape({
   // username: Yup.string().email("Invalid email address").required("Email is required").trim(),
-  username: Yup.string()
-    .min(4)
-    .required("Username must be more than 3 letters")
-    .trim(),
+  username: Yup.string().min(4).required("Username must be more than 3 letters").trim(),
   password: Yup.string().required("Password is required").trim(),
 });
 
@@ -41,10 +39,9 @@ const Login = () => {
     resolver: yupResolver(formValidateSchema),
   });
 
-  const onSubmit = async (
-    values: User = { username: "username", password: "1234" }
-  ) => {
-    alert(JSON.stringify(values));
+  const onSubmit = async (values: User = { username: "username", password: "1234" }) => {
+    const result = await axios.post("http://localhost:8081/api/v2/login", values);
+    alert(JSON.stringify(result.data));
   };
 
   const showForm = () => {
@@ -99,13 +96,7 @@ const Login = () => {
           )}
         ></Controller>
 
-        <Button
-          sx={classes.submitBtn}
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-        >
+        <Button sx={classes.submitBtn} type="submit" fullWidth variant="contained" color="primary">
           Login
         </Button>
 
