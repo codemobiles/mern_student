@@ -1,9 +1,9 @@
 import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
-import { User } from "../entity/User";
+import { Users } from "../entity/User";
 
 export class UserController {
-  private userRepository = AppDataSource.getMongoRepository(User);
+  private userRepository = AppDataSource.getMongoRepository(Users);
 
   async all(request: Request, response: Response, next: NextFunction) {
     return this.userRepository.find();
@@ -13,7 +13,7 @@ export class UserController {
     const id = parseInt(request.params.id);
 
     const user = await this.userRepository.findOne({
-      where: { id },
+      where: { _id: id },
     });
 
     if (!user) {
@@ -23,12 +23,11 @@ export class UserController {
   }
 
   async save(request: Request, response: Response, next: NextFunction) {
-    const { firstName, lastName, age } = request.body;
+    const { username, password } = request.body;
 
-    const user = Object.assign(new User(), {
-      firstName,
-      lastName,
-      age,
+    const user = Object.assign(new Users(), {
+      username,
+      password,
     });
 
     return this.userRepository.save(user);
@@ -37,7 +36,7 @@ export class UserController {
   async remove(request: Request, response: Response, next: NextFunction) {
     const id = parseInt(request.params.id);
 
-    let userToRemove = await this.userRepository.findOneBy({ id });
+    let userToRemove = await this.userRepository.findOneBy({ _id: id });
 
     if (!userToRemove) {
       return "this user not exist";

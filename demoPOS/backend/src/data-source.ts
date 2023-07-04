@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { User } from "./entity/User";
+import { Users } from "./entity/User";
 
 export const AppDataSource = new DataSource({
   type: "mongodb",
@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   host: "127.0.0.1",
   synchronize: true,
   logging: false,
-  entities: [User],
+  entities: [Users],
   migrations: [],
   subscribers: [],
 });
