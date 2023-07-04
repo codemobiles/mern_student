@@ -1,12 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { LoginResult, RegisterResult } from "@/types/auth-result.type";
 
 type AuthState = {
   count: number;
+  loginResult?: LoginResult;
+  registerResult?: RegisterResult;
+  isAuthenticating: boolean;
+  isAuthented: boolean;
+  isError: boolean;
 };
 
 const initialState: AuthState = {
   count: 1,
+  isAuthenticating: true,
+  isAuthented: false,
+  isError: false,
 };
 
 export const addAsync = createAsyncThunk("auth/addAsync", async () => {
