@@ -14,10 +14,10 @@ export const addAsync = createAsyncThunk("auth/addAsync", async () => {
   return 1;
 });
 
-export const removeAsync = async () => {
+export const removeAsync = createAsyncThunk("auth/removeAsync", async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return -1;
-};
+});
 
 const authSlice = createSlice({
   name: "auth",
