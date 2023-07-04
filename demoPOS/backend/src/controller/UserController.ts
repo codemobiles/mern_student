@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Users } from "../entity/Users";
 import { AppDataSource } from "../data-source";
-// import * as bcrypt from "bcryptjs";
+import * as bcrypt from "bcryptjs";
 import { savedValue } from "../utils/cm-util";
 // import jwt from "./../utils/jwt";
 
@@ -29,35 +29,33 @@ export class UserController {
   }
 
   async login(req: Request, res: Response, next: NextFunction) {
-    // try {
-    //   const { username, password } = req.body;
+    try {
+      const { username, password } = req.body;
 
-    //   let doc = await this.userRepository.findOne({
-    //     where: { username },
-    //   });
+      let doc = await this.userRepository.findOne({
+        where: { username },
+      });
 
-    //   if (doc) {
-    //     let isPasswordValid = await bcrypt.compare(password, doc.password);
-    //     if (isPasswordValid) {
-    //       const payload = {
-    //         id: doc._id,
-    //         level: doc.level,
-    //         username: doc.username,
-    //       };
-    //       let token = jwt.sign(payload);
+      if (doc) {
+        let isPasswordValid = await bcrypt.compare(password, doc.password);
+        if (isPasswordValid) {
+          //   const payload = {
+          //     id: doc._id,
+          //     level: doc.level,
+          //     username: doc.username,
+          //   };
+          let token = "1234"; // jwt.sign(payload);
 
-    //       return { result: "ok", token, message: "success" };
-    //     } else {
-    //       return { result: "nok", message: "invalid password" };
-    //     }
-    //   } else {
-    //     return { result: "nok", message: "invalid username" };
-    //   }
-    // } catch (error) {
-    //   return { result: "nok", error };
-    // }
-
-    return { result: "ok" };
+          return { result: "ok", token, message: "success" };
+        } else {
+          return { result: "nok", message: "invalid password" };
+        }
+      } else {
+        return { result: "nok", message: "invalid username" };
+      }
+    } catch (error) {
+      return { result: "nok", error };
+    }
   }
 
   async remove(req, res: Response, next: NextFunction) {
