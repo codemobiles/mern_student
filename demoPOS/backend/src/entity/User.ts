@@ -3,7 +3,7 @@ import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm";
 @Entity()
 export class Users {
   @ObjectIdColumn()
-  _id: ObjectId;
+  _id?: ObjectId;
 
   @Column()
   username: string;
@@ -12,13 +12,13 @@ export class Users {
   password: string;
 
   @Column()
-  level: string;
+  level?: string;
 
   @Column()
-  created: Date;
+  created?: Date;
 
   @Column()
-  __v: number;
+  __v?: number;
 }
 
 // "_id": "5aa7c5137a3066a2b958947d",
