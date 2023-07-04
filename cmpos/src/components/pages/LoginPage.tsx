@@ -41,7 +41,11 @@ const Login = () => {
     resolver: yupResolver(formValidateSchema),
   });
 
-  const onSubmit = async (values: User) => {};
+  const onSubmit = async (
+    values: User = { username: "username", password: "1234" }
+  ) => {
+    alert(JSON.stringify(values));
+  };
 
   const showForm = () => {
     return (
