@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 type AuthState = {
@@ -9,10 +9,10 @@ const initialState: AuthState = {
   count: 1,
 };
 
-export const addAsync = async () => {
+export const addAsync = createAsyncThunk("auth/addAsync", async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return 1;
-};
+});
 
 export const removeAsync = async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
