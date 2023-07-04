@@ -32,7 +32,15 @@ const authSlice = createSlice({
     },
   },
   // asynchronous
-  extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder.addCase(addAsync.fulfilled, (state, action) => {
+      state.count = state.count + action.payload;
+    });
+
+    builder.addCase(removeAsync.fulfilled, (state, action) => {
+      state.count = state.count + action.payload;
+    });
+  },
 });
 
 export default authSlice.reducer;
