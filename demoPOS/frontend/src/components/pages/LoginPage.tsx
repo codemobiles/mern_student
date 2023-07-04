@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { authSelector } from "@/store/slices/authSlice";
+import { add, authSelector, remove } from "@/store/slices/authSlice";
 import { useAppDispatch } from "@/store/store";
 
 const formValidateSchema = Yup.object().shape({
@@ -121,11 +121,11 @@ const Login = () => {
 
         {/* Counter */}
         <Stack direction="row" className="mt-5" justifyContent="space-between">
-          <Button variant="contained" className="w-[100px]">
+          <Button variant="contained" className="w-[100px]" onClick={() => dispatch(remove())}>
             Remove
           </Button>
           <Typography variant="h3">{authReducer.count}</Typography>
-          <Button variant="contained" className="w-[100px]">
+          <Button variant="contained" className="w-[100px]" onClick={() => dispatch(add())}>
             Add
           </Button>
         </Stack>
