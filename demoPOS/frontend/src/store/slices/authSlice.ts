@@ -12,6 +12,7 @@ const initialState: AuthState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  // synchronous
   reducers: {
     add: (state) => {
       state.count++;
@@ -20,6 +21,8 @@ const authSlice = createSlice({
       state.count--;
     },
   },
+  // asynchronous
+  extraReducers: (builder) => {},
 });
 
 export default authSlice.reducer;
