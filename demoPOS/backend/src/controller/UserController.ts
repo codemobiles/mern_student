@@ -1,49 +1,73 @@
-import { AppDataSource } from "../data-source";
 import { NextFunction, Request, Response } from "express";
-import { Users } from "../entity/User";
+import { Users } from "../entity/Users";
+import { AppDataSource } from "../data-source";
+// import * as bcrypt from "bcryptjs";
+import { savedValue } from "../utils/cm-util";
+// import jwt from "./../utils/jwt";
 
 export class UserController {
   private userRepository = AppDataSource.getMongoRepository(Users);
 
-  async all(request: Request, response: Response, next: NextFunction) {
+  async register(req: Request, res: Response, next: NextFunction) {
+    // try {
+    //   req.body.created = savedValue(req.body.created, new Date());
+    //   req.body.level = savedValue(req.body.level, "normal");
+    //   req.body.__v = savedValue(req.body.__v, 0);
+
+    //   req.body.password = await bcrypt.hash(req.body.password, 8);
+    //   const doc = await this.userRepository.save(req.body);
+    //   return { result: "ok", message: doc };
+    // } catch (e) {
+    //   return { result: "nok", message: "invalid data" };
+    // }
+
+    return { result: "ok" };
+  }
+
+  async all(req: Request, res: Response, next: NextFunction) {
     return this.userRepository.find();
   }
 
-  async one(request: Request, response: Response, next: NextFunction) {
-    const id = parseInt(request.params.id);
+  async login(req: Request, res: Response, next: NextFunction) {
+    // try {
+    //   const { username, password } = req.body;
 
-    const user = await this.userRepository.findOne({
-      where: { _id: id },
-    });
+    //   let doc = await this.userRepository.findOne({
+    //     where: { username },
+    //   });
 
-    if (!user) {
-      return "unregistered user";
-    }
-    return user;
+    //   if (doc) {
+    //     let isPasswordValid = await bcrypt.compare(password, doc.password);
+    //     if (isPasswordValid) {
+    //       const payload = {
+    //         id: doc._id,
+    //         level: doc.level,
+    //         username: doc.username,
+    //       };
+    //       let token = jwt.sign(payload);
+
+    //       return { result: "ok", token, message: "success" };
+    //     } else {
+    //       return { result: "nok", message: "invalid password" };
+    //     }
+    //   } else {
+    //     return { result: "nok", message: "invalid username" };
+    //   }
+    // } catch (error) {
+    //   return { result: "nok", error };
+    // }
+
+    return { result: "ok" };
   }
 
-  async save(request: Request, response: Response, next: NextFunction) {
-    const { username, password } = request.body;
-
-    const user = Object.assign(new Users(), {
-      username,
-      password,
-    });
-
-    return this.userRepository.save(user);
-  }
-
-  async remove(request: Request, response: Response, next: NextFunction) {
-    const id = parseInt(request.params.id);
-
-    let userToRemove = await this.userRepository.findOneBy({ _id: id });
-
-    if (!userToRemove) {
-      return "this user not exist";
+  async remove(req, res: Response, next: NextFunction) {
+    try {
+      await this.userRepository.findOneAndDelete({
+        username: req.params.username,
+      });
+      return { result: "ok" };
+    } catch (error) {
+      return { result: "nok" };
     }
-
-    await this.userRepository.remove(userToRemove);
-
-    return "user has been removed";
   }
 }
