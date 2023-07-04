@@ -5,7 +5,7 @@ type AuthState = {
 };
 
 const initialState: AuthState = {
-  count: 0,
+  count: 1,
 };
 
 const authSlice = createSlice({

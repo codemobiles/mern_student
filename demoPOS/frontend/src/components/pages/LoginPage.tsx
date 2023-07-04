@@ -13,6 +13,8 @@ import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 const formValidateSchema = Yup.object().shape({
   // username: Yup.string().email("Invalid email address").required("Email is required").trim(),
@@ -22,6 +24,7 @@ const formValidateSchema = Yup.object().shape({
 
 const Login = () => {
   const navigate = useNavigate();
+  const authReducer = useSelector((state:RootState)=>state.authReducer)
 
   const classes: any = {
     root: { display: "flex", justifyContent: "center", alignItems: "center" },
