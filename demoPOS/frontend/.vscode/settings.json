@@ -1,0 +1,6 @@
+{
+  "editor.formatOnSave": true,
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#f18d49"
+  }
+}
