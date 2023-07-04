@@ -24,7 +24,7 @@ const formValidateSchema = Yup.object().shape({
 
 const Login = () => {
   const navigate = useNavigate();
-  const authReducer = useSelector((state:RootState)=>state.authReducer)
+  const authReducer = useSelector((state: RootState) => state.authReducer);
 
   const classes: any = {
     root: { display: "flex", justifyContent: "center", alignItems: "center" },
@@ -122,7 +122,7 @@ const Login = () => {
           <Button variant="contained" className="w-[100px]">
             Remove
           </Button>
-          <Typography variant="h3">0</Typography>
+          <Typography variant="h3">{authReducer.count}</Typography>
           <Button variant="contained" className="w-[100px]">
             Add
           </Button>
