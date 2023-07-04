@@ -1,7 +1,10 @@
+
+### get
 GET http://localhost:8081/accounts HTTP/1.1
 
 
-POST http://localhost:8081/accounts HTTP/1.1
+### post
+POST http://localhost:8081/users HTTP/1.1
 Content-Type: application/json
 
-{"username":"dog", "password":"1234"}
+{"username":"dog2", "password":"1234"}
