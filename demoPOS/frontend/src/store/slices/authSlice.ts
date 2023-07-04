@@ -9,6 +9,16 @@ const initialState: AuthState = {
   count: 1,
 };
 
+export const addAsync = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return 1;
+};
+
+export const removeAsync = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return -1;
+};
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
