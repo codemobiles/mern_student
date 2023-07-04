@@ -1,0 +1,25 @@
+
+### Get Transaction 
+GET http://localhost:8081/api/v2/transaction HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMmI4NGJlZWQxZGJlODUzYzVkYTlmMSIsImxldmVsIjoibm9ybWFsIiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY2MzIzMjMxNywiZXhwIjoxNjY1ODI0MzE3LCJhdWQiOiJodHRwOi8vY29kZW1vYmlsZXMuY29tIiwiaXNzIjoiQ29kZU1vYmlsZXMgTHRkIiwic3ViIjoiY2hhaXlhc2l0LnRAZ21haWwuY29tIn0.k0IOCcO-_SMg_vAKxIqwqhkVl6yXsg3bgg7czHr7Aue2Y6pJg5BxfVX7aXHmLN97WuM65eNL1Wc55btlKuyvm7PbF2mBw5yLCXmYbZ7CvZzAhuv5EGxTi2Vob-XRe2ju4iU5o2kuqtcwlCRwwDp2jHx7bHZVj6V9gAANUYvOxDs
+Content-Type: application/json
+
+### Get Transaction between
+GET http://localhost:8081/api/v2/transaction/between/2018-01-22/2022-10-22 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMmI4NGJlZWQxZGJlODUzYzVkYTlmMSIsImxldmVsIjoibm9ybWFsIiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY2Mzg5MjgwNiwiZXhwIjoxNjY2NDg0ODA2LCJhdWQiOiJodHRwOi8vY29kZW1vYmlsZXMuY29tIiwiaXNzIjoiQ29kZU1vYmlsZXMgTHRkIiwic3ViIjoiY2hhaXlhc2l0LnRAZ21haWwuY29tIn0.IlQynYupAkOfg4z5F-QYLH3G2tNdGsbrnk8UdYCrZzAmfsbAVDIckICgSEUWWaSYiTMuFKV7Jh9DwSNhS8naCtF2Uvro9tvq8yBoVAj_CxmAjQPQj4gAp52H3lU5l5JKlbZdsANWNML5Nd3XcxgnglDejxql_NwuphtSnPoaqAU
+Content-Type: application/json
+
+
+### Create Tranaction 
+POST http://localhost:8081/api/v2/transaction HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMmI4NGJlZWQxZGJlODUzYzVkYTlmMSIsImxldmVsIjoibm9ybWFsIiwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY2MzIzMjMxNywiZXhwIjoxNjY1ODI0MzE3LCJhdWQiOiJodHRwOi8vY29kZW1vYmlsZXMuY29tIiwiaXNzIjoiQ29kZU1vYmlsZXMgTHRkIiwic3ViIjoiY2hhaXlhc2l0LnRAZ21haWwuY29tIn0.k0IOCcO-_SMg_vAKxIqwqhkVl6yXsg3bgg7czHr7Aue2Y6pJg5BxfVX7aXHmLN97WuM65eNL1Wc55btlKuyvm7PbF2mBw5yLCXmYbZ7CvZzAhuv5EGxTi2Vob-XRe2ju4iU5o2kuqtcwlCRwwDp2jHx7bHZVj6V9gAANUYvOxDs
+Content-Type: application/json
+
+{
+  "total": 30.50,
+  "paid": 100,
+  "change": 49.50,
+  "payment_type": "cash",
+  "payment_detail": "full",
+  "order_list": "[]"  
+}

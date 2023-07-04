@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "a87999c9-b58a-9c49-3cc7-2978cde128d7",
+		"name": "MycmPOS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"lek\", \"password\": \"1234\"}"
+				},
+				"url": {
+					"raw": "localhost:8081/api/v2/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"admin\", \"password\": \"1234\"}"
+				},
+				"url": {
+					"raw": "localhost:8081/api/v2/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNjczYWM3MGU3ZDU4MTc0NzJhYjQ2YyIsImxldmVsIjoibm9ybWFsIiwidXNlcm5hbWUiOiJrYW4iLCJpYXQiOjE1Njg0Mjc1NjksImV4cCI6MTU3MTAxOTU2OSwiYXVkIjoiaHR0cDovL2NvZGVtb2JpbGVzLmNvbSIsImlzcyI6IkNvZGVNb2JpbGVzIEx0ZCIsInN1YiI6ImNoYWl5YXNpdC50QGdtYWlsLmNvbSJ9.VnLLP5f4uyXdiuPxcqPKekLZ07rpgmVS_BUvekr7npY1U_f-zEMkVsztBi1qsqvOZQr3iAUFPfJoUuhALCpzSW-5TTQN4FHusaFvcQbJrUKJjiPQOuyZ5OKYoj7oO41mn3rWQ3-iPjf-0E2E_k5PbOCsqxECn7w75-oPRCNw1og"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v2/product?token=1234",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"product"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product  by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v2/product/id/17",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"product",
+						"id",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get product by keyword",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v2/product/name/relay",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"product",
+						"name",
+						"relay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all transaction",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v2/transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all transaction by date",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v2/transaction",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single transaction",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:8081/api/v2/transaction/id/119",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"transaction",
+						"id",
+						"119"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/v2/product/id/113",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"product",
+						"id",
+						"113"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNjI4NWE1ZTQzZGJiMmYzYzk3Mzc1NSIsImxldmVsIjoibm9ybWFsIiwiaWF0IjoxNTMzMTg0MDEwLCJleHAiOjE1MzU3NzYwMTAsImF1ZCI6Imh0dHA6Ly9jb2RlbW9iaWxlcy5jb20iLCJpc3MiOiJDb2RlTW9iaWxlIEx0ZC4iLCJzdWIiOiJjaGFpeWFzaXQudEBnbWFpbC5jb20ifQ.n3r_GvpTI8K87lEauqk9UBvU_iyw871OiReHcKrXW0uV_DfzCLnJfUY1G05NJ1C6n9FQepWyttfeFrnrklHX3KCsF-4nGDhh3Fee3iM35XjRcjSK0bzcfLdGEsFRDp88R1zJd-MILthBXjn7qvpnVSmGpNl8sB_ArQWh6e0scUg"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "product_id",
+							"value": "93",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "lek",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/chaiyasit/Desktop/screenshots/Screen Shot 2019-08-23 at 8.02.08 AM.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8081/api/v2/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNjI4NWE1ZTQzZGJiMmYzYzk3Mzc1NSIsImxldmVsIjoibm9ybWFsIiwiaWF0IjoxNTMzMTg0MDEwLCJleHAiOjE1MzU3NzYwMTAsImF1ZCI6Imh0dHA6Ly9jb2RlbW9iaWxlcy5jb20iLCJpc3MiOiJDb2RlTW9iaWxlIEx0ZC4iLCJzdWIiOiJjaGFpeWFzaXQudEBnbWFpbC5jb20ifQ.n3r_GvpTI8K87lEauqk9UBvU_iyw871OiReHcKrXW0uV_DfzCLnJfUY1G05NJ1C6n9FQepWyttfeFrnrklHX3KCsF-4nGDhh3Fee3iM35XjRcjSK0bzcfLdGEsFRDp88R1zJd-MILthBXjn7qvpnVSmGpNl8sB_ArQWh6e0scUg"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "stock",
+							"value": "4444",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/chaiyasit/Downloads/demo.jpeg"
+						},
+						{
+							"key": "price",
+							"value": "1000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8081/api/v2/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"v2",
+						"product"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
