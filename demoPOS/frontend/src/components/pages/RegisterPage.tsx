@@ -40,8 +40,8 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values: User) => {
-    const result = await axios.post("/register", values);
-    alert(JSON.stringify(values));
+    const result = await httpClient.post("/register", values);
+    alert(JSON.stringify(result.data));
     // const result = await dispatch(register(values));
     // if (register.fulfilled.match(result)) {
     //   navigate("/login");

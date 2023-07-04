@@ -16,7 +16,7 @@ import axios from "axios";
 
 const formValidateSchema = Yup.object().shape({
   // username: Yup.string().email("Invalid email address").required("Email is required").trim(),
-  username: Yup.string().min(4).required("Username must be more than 3 letters").trim(),
+  username: Yup.string().min(3).required("Username must be more than 3 letters").trim(),
   password: Yup.string().required("Password is required").trim(),
 });
 
