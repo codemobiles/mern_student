@@ -1,3 +1,4 @@
+import { ProductController } from "./controller/ProductController";
 import { UserController } from "./controller/UserController";
 
 export const Routes = [
@@ -5,6 +6,12 @@ export const Routes = [
     method: "get",
     route: "/accounts",
     controller: UserController,
+    action: "all",
+  },
+  {
+    method: "get",
+    route: "/products",
+    controller: ProductController,
     action: "all",
   },
   {
