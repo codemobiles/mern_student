@@ -1,18 +1,24 @@
 import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm";
 
 @Entity()
-export class User {
+export class Users {
   @ObjectIdColumn()
-  id: ObjectId;
+  _id: ObjectId;
 
   @Column()
-  firstName: string;
+  username: string;
 
   @Column()
-  lastName: string;
+  password: string;
 
   @Column()
-  age: number;
+  level: string;
+
+  @Column()
+  created: Date;
+
+  @Column()
+  __v: number;
 }
 
 // "_id": "5aa7c5137a3066a2b958947d",
