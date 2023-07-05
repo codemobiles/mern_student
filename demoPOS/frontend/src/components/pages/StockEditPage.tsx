@@ -157,7 +157,7 @@ const StockEdit = () => {
             <Button fullWidth variant="contained" color="primary" type="submit" sx={{ marginRight: 1 }}>
               Edit
             </Button>
-            <Button fullWidth component={Link} to="/stock" color="info" variant="outlined">
+            <Button fullWidth onClick={() => setOpen(true)} color="info" variant="outlined">
               Cancl
             </Button>
           </CardActions>
