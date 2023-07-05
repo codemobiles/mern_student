@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 export default function StockPage() {
-  const dummyArray = ["Angular", "VueJS", "ReactJS"];
   const dispatch = useAppDispatch();
   const stockReducer = useSelector(stockSelector);
 
@@ -16,8 +15,8 @@ export default function StockPage() {
     <div>
       <h2>Stock</h2>
       <ul>
-        {dummyArray.map((item) => (
-          <li>{item}</li>
+        {stockReducer.stockAllResult.map((item) => (
+          <li>{item.name}</li>
         ))}
       </ul>
     </div>
