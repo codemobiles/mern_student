@@ -45,7 +45,10 @@ const Login = () => {
   });
 
   const onSubmit = async (values: User = { username: "username", password: "1234" }) => {
-    dispatch(login(values));
+    const result = await dispatch(login(values));
+    if (login.fulfilled.match(result)) {
+      navigate("/stock");
+    }
   };
 
   const showForm = () => {

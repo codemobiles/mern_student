@@ -35,10 +35,21 @@ export const login = createAsyncThunk("auth/login", async (user: User) => {
   const result = await httpClient.post<LoginResult>(server.LOGIN_URL, user);
   if (result.data.result == "ok") {
     // login success
+    const { token } = result.data;
+    localStorage.setItem(server.TOKEN_KEY, token);
     return result.data;
   }
 
   // login failed
+  throw Error();
+});
+
+export const register = createAsyncThunk("auth/register", async (value: User) => {
+  const result = await httpClient.post<RegisterResult>(server.REGISTER_URL, value);
+  if (result.data.result === "ok") {
+    return result.data;
+  }
+
   throw Error();
 });
 
@@ -78,6 +89,16 @@ const authSlice = createSlice({
       state.loginResult = undefined;
       state.isError = true;
       state.isAuthenticating = false;
+    });
+
+    // register
+    builder.addCase(register.fulfilled, (state) => {
+      state.isError = false;
+    });
+
+    // register
+    builder.addCase(register.rejected, (state) => {
+      state.isError = true;
     });
   },
 });
