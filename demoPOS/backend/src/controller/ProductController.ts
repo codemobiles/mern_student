@@ -21,7 +21,7 @@ export class ProductController {
   async add(req: Request, res: Response, next: NextFunction) {
     const form = formidable({});
     form.parse(req, async (error, fields: any, files) => {
-      return { error, fields, files };
+      return res.json({ error, fields, files });
 
       // if (error) {
       //   res.json({ result: "nok", error });
