@@ -3,7 +3,7 @@ import loginBg from "@/assets/images/bg4.jpg";
 import { User } from "@/types/user.type";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Icons from "@mui/icons-material/";
-import { Box, InputAdornment, Stack } from "@mui/material";
+import { Alert, Box, InputAdornment, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { add, addAsync, authSelector, remove, removeAsync } from "@/store/slices/authSlice";
+import { add, addAsync, authSelector, login, remove, removeAsync } from "@/store/slices/authSlice";
 import { useAppDispatch } from "@/store/store";
 
 const formValidateSchema = Yup.object().shape({
@@ -45,8 +45,7 @@ const Login = () => {
   });
 
   const onSubmit = async (values: User = { username: "username", password: "1234" }) => {
-    const result = await axios.post("http://localhost:8081/api/v2/login", values);
-    alert(JSON.stringify(result.data));
+    dispatch(login(values));
   };
 
   const showForm = () => {
@@ -76,7 +75,6 @@ const Login = () => {
             />
           )}
         ></Controller>
-
         <Controller
           name="password"
           control={control}
@@ -100,11 +98,11 @@ const Login = () => {
             />
           )}
         ></Controller>
-
+        {/* Show error when login failed */}
+        {authReducer.isError && <Alert severity="error">Login failed</Alert>}
         <Button sx={classes.submitBtn} type="submit" fullWidth variant="contained" color="primary">
           Login
         </Button>
-
         <Button
           sx={{ marginTop: 2 }}
           onClick={() => {
@@ -118,7 +116,6 @@ const Login = () => {
         >
           Register
         </Button>
-
         {/* Counter */}
         <Stack direction="row" className="mt-5" justifyContent="space-between">
           <Button variant="contained" className="w-[100px]" onClick={() => dispatch(removeAsync())}>
