@@ -50,7 +50,18 @@ export default function StockCreatePage() {
               control={control}
               name="name"
               render={({ field }) => {
-                return <TextField label="Name" {...field} fullWidth error={Boolean(errors.name?.message)} helperText={errors.name?.message?.toString()} />;
+                return (
+                  <TextField
+                    {...field}
+                    label="Name"
+                    fullWidth
+                    error={Boolean(errors.name?.message)}
+                    helperText={errors.name?.message?.toString()}
+                    variant="outlined"
+                    margin="normal"
+                    autoFocus
+                  />
+                );
               }}
             />
 
@@ -67,7 +78,6 @@ export default function StockCreatePage() {
                     helperText={errors.price?.message?.toString()}
                     variant="outlined"
                     margin="normal"
-                    required
                     fullWidth
                     autoFocus
                   />
@@ -88,7 +98,6 @@ export default function StockCreatePage() {
                     helperText={errors.stock?.message?.toString()}
                     variant="outlined"
                     margin="normal"
-                    required
                     fullWidth
                     autoFocus
                   />
