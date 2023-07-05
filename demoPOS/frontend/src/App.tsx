@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "@/components/layouts/Header";
 import Menu from "@/components/layouts/Menu";
-import { Container } from "@mui/material";
+import { Container, createTheme } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "@/components/pages/LoginPage";
 import RegisterPage from "@/components/pages/RegisterPage";
@@ -54,6 +54,9 @@ export default function App() {
   const [open, setOpen] = React.useState(true);
   const authReducer = useSelector(authSelector);
   const dispatch = useAppDispatch();
+  const theme = createTheme({
+    spacing: 20,
+  });
 
   React.useEffect(() => {
     // Called when component is created
