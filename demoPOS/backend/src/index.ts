@@ -10,7 +10,7 @@ AppDataSource.initialize()
     const app = express();
     app.use(express.json());
     app.use(cors());
-    app.use(express.static(process.env.ROOT_PATH))
+    app.use(express.static(process.env.ROOT_PATH + "/uploaded"));
 
     // register express routes from defined application routes
     Routes.forEach((route) => {
