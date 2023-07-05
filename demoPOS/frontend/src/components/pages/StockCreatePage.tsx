@@ -12,6 +12,7 @@ import { Product } from "@/types/product.type";
 import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { CropDin } from "@mui/icons-material";
 
 const formValidateSchema = Yup.object().shape({
   name: Yup.string().required("Name is required").trim(),
@@ -40,6 +41,8 @@ export default function StockCreatePage() {
             <Typography gutterBottom variant="h3">
               Create Product
             </Typography>
+            {/* Name */}
+            <Controller control={control} name="name" render={({ field }) => <TextField label="Name" {...field} fullWidth />} />
           </CardContent>
         </Card>
       </form>
