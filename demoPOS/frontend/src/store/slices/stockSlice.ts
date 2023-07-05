@@ -25,6 +25,27 @@ export const getProducts = createAsyncThunk("stock/getAll", async (keyword: stri
   }
 });
 
+// Query by Id
+export const getProductById = createAsyncThunk("stock/getById", async (id: string): Promise<Product> => {
+  const result = await await httpClient.get(`${server.PRODUCT_URL}/id/${id}`);
+  return result.data;
+});
+
+// Delete
+export const deleteProduct = createAsyncThunk("stock/delete", async (id: string) => {
+  await httpClient.delete(`${server.PRODUCT_URL}/id/${id}`);
+});
+
+// Edit
+export const editProduct = createAsyncThunk("stock/edit", async (formData: any) => {
+  await httpClient.put(server.PRODUCT_URL, formData);
+});
+
+// Add
+export const addProduct = createAsyncThunk("stock/add", async (formData: FormData) => {
+  await httpClient.post(server.PRODUCT_URL, formData);
+});
+
 const stockSlice = createSlice({
   name: "stock",
   initialState,
