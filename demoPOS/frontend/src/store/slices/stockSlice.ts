@@ -58,6 +58,11 @@ const stockSlice = createSlice({
     builder.addCase(getProducts.rejected, (state) => {
       state.stockAllResult = [];
     });
+
+    // getProductById
+    builder.addCase(getProductById.fulfilled, (state, action) => {
+      state.stockOneResult = action.payload;
+    });
   },
 });
 
