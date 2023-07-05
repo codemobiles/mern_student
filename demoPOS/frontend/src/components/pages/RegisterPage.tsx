@@ -17,7 +17,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { httpClient } from "@/utils/HttpClient";
-import { authSelector } from "@/store/slices/authSlice";
+import { authSelector, register } from "@/store/slices/authSlice";
+import { useAppDispatch } from "@/store/store";
 // add any to fix error temporary
 const classes: SxProps<Theme> | any = {
   root: { display: "flex", justifyContent: "center", alignItems: "center" },
@@ -36,17 +37,15 @@ const formValidateSchema = Yup.object().shape({
 });
 
 const Register = () => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const authReducer = useSelector(authSelector);
   const navigate = useNavigate();
 
   const onSubmit = async (values: User) => {
-    const result = await httpClient.post("/register", values);
-    alert(JSON.stringify(result.data));
-    // const result = await dispatch(register(values));
-    // if (register.fulfilled.match(result)) {
-    //   navigate("/login");
-    // }
+    const result = await dispatch(register(values));
+    if (register.fulfilled.match(result)) {
+      navigate("/login");
+    }
   };
 
   const initialValue: User = { username: "", password: "" };
