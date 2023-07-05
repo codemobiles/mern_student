@@ -16,7 +16,7 @@ export default function StockPage() {
       <h2>Stock</h2>
       <ul>
         {stockReducer.stockAllResult.map((item) => (
-          <li>{item.name}</li>
+          <li key={item._id}>{item.name}</li>
         ))}
       </ul>
     </div>
