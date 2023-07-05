@@ -23,5 +23,19 @@ export default function StockCreatePage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  return <div>StockCreatePage</div>;
+  return (
+    <>
+      <form>
+        <Card>
+          <CardContent>
+            <Typography gutterBottom variant="h3">
+              Create Product
+            </Typography>
+          
+
+          </CardContent>
+        </Card>
+      </form>
+    </>
+  );
 }
