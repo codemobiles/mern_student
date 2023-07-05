@@ -42,7 +42,13 @@ export default function StockCreatePage() {
               Create Product
             </Typography>
             {/* Name */}
-            <Controller control={control} name="name" render={({ field }) => <TextField label="Name" {...field} fullWidth />} />
+            <Controller
+              control={control}
+              name="name"
+              render={({ field }) => {
+                return <TextField label="Name" {...field} fullWidth error={Boolean(errors.name?.message)} helperText={errors.name?.message?.toString()} />;
+              }}
+            />
           </CardContent>
         </Card>
       </form>
