@@ -72,7 +72,7 @@ const StockEdit = () => {
     return (
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Card>
-          <LinearProgress />
+          {stockReducer.isLoading && <LinearProgress />}
           <CardContent sx={{ padding: 4 }}>
             <Typography gutterBottom variant="h3">
               Edit Product
