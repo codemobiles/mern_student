@@ -33,9 +33,11 @@ export default function StockCreatePage() {
     formState: { errors },
   } = useForm<Product>({ defaultValues: initialValue, resolver: yupResolver(formValidateSchema) });
 
+  const submit = (value: Product) => {};
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit(submit)}>
         <Card elevation={7}>
           <CardContent>
             <Typography gutterBottom variant="h3">
