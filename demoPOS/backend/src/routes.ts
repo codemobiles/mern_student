@@ -29,6 +29,12 @@ export const Routes = [
   },
   {
     method: "get",
+    route: "/product/name/:name",
+    controller: ProductController,
+    action: "allLike",
+  },
+  {
+    method: "get",
     route: "/users/:id",
     controller: UserController,
     action: "one",
