@@ -179,10 +179,7 @@ const StockEdit = () => {
   const showConfirmDialog = () => {
     return (
       <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
-        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">Are you sure to exit?</DialogContentText>
-        </DialogContent>
+        <DialogTitle id="alert-dialog-title">{"Are you sure to exit?"}</DialogTitle>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={() => navigate("/stock")} autoFocus>
