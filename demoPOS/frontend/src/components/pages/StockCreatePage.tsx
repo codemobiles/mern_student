@@ -37,6 +37,12 @@ export default function StockCreatePage() {
     alert(JSON.stringify(value));
   };
 
+  const showPreviewImage = () => {
+    if (watchPreviewImage) {
+      return <img alt="" src={watchPreviewImage} style={{ height: 100 }} />;
+    }
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit(submit)}>
@@ -102,6 +108,17 @@ export default function StockCreatePage() {
                     autoFocus
                   />
                 );
+              }}
+            />
+
+            <TextField
+              sx={{ mt: 2 }}
+              type="file"
+              fullWidth
+              onChange={(e: React.ChangeEvent<any>) => {
+                e.preventDefault();
+                setValue("file", e.target.files[0]); // for upload
+                setValue("file_obj", URL.createObjectURL(e.target.files[0])); // for preview image
               }}
             />
           </CardContent>
