@@ -1,9 +1,14 @@
-import React from 'react'
+export default function StockPage() {
+  const dummyArray = ["Angular", "VueJS", "ReactJS"];
 
-type Props = {}
-
-export default function StockPage({}: Props) {
   return (
-    <div>StockPage</div>
-  )
+    <div>
+      <h2>Stock</h2>
+      <ul>
+        {dummyArray.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
