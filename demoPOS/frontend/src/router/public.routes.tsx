@@ -7,7 +7,7 @@ const PublicRoutes = ({ isAuthented }: Props) => {
   const location = useLocation();
   console.log(location.pathname);
 
-  return isAuthented ? <Navigate to="/report" /> : <Outlet />;
+  return isAuthented ? <Navigate to="/stock" /> : <Outlet />;
 };
 
 export default PublicRoutes;

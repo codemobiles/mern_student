@@ -11,6 +11,7 @@ import RegisterPage from "@/components/pages/RegisterPage";
 import { useSelector } from "react-redux";
 import { authSelector } from "@/store/slices/authSlice";
 import StockPage from "@/components/pages/StockPage";
+import PublicRoutes from "./router/public.routes";
 
 const drawerWidth = 240;
 
@@ -63,11 +64,14 @@ export default function App() {
         <Container>
           <DrawerHeader />
           <Routes>
-            <Route path="/" element={<Navigate to="/login" />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/stock" element={<StockPage />} />
-            <Route path="*" element={<Navigate to="/login" />} />
+            {/** Wrap all Route under PublicRoutes element */}
+            <Route path="/" element={<PublicRoutes isAuthented={authReducer.isAuthented} />}>
+              <Route path="/" element={<Navigate to="/login" />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/stock" element={<StockPage />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </Route>
           </Routes>
         </Container>
       </Main>
