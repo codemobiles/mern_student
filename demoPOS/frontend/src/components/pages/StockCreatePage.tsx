@@ -33,7 +33,9 @@ export default function StockCreatePage() {
     formState: { errors },
   } = useForm<Product>({ defaultValues: initialValue, resolver: yupResolver(formValidateSchema) });
 
-  const submit = (value: Product) => {};
+  const submit = (value: Product) => {
+    alert(JSON.stringify(value));
+  };
 
   return (
     <>
@@ -49,6 +51,48 @@ export default function StockCreatePage() {
               name="name"
               render={({ field }) => {
                 return <TextField label="Name" {...field} fullWidth error={Boolean(errors.name?.message)} helperText={errors.name?.message?.toString()} />;
+              }}
+            />
+
+            <Controller
+              name="price"
+              control={control}
+              render={({ field }) => {
+                return (
+                  <TextField
+                    {...field}
+                    label="Price"
+                    type="number"
+                    error={Boolean(errors.price?.message)}
+                    helperText={errors.price?.message?.toString()}
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    autoFocus
+                  />
+                );
+              }}
+            />
+
+            <Controller
+              name="stock"
+              control={control}
+              render={({ field }) => {
+                return (
+                  <TextField
+                    {...field}
+                    type="number"
+                    label="Stock"
+                    error={Boolean(errors.stock?.message)}
+                    helperText={errors.stock?.message?.toString()}
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    autoFocus
+                  />
+                );
               }}
             />
           </CardContent>
