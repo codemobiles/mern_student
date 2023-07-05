@@ -1,3 +1,4 @@
+import { Card, Stack } from "@mui/material";
 import React from "react";
 
 type Props = {
@@ -8,5 +9,9 @@ type Props = {
 };
 
 export default function StockCard(props: Props) {
-  return <div>StockCard</div>;
+  return (
+    <Card elevation={7}>
+      <Stack>{props.title}</Stack>
+    </Card>
+  );
 }
