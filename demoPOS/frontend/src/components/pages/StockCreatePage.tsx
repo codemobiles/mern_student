@@ -35,8 +35,16 @@ export default function StockCreatePage() {
 
   const watchPreviewImage = watch("file_obj");
 
-  const submit = (value: Product) => {
-    alert(JSON.stringify(value));
+  const submit = async (values: Product) => {
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("price", String(values.price));
+    formData.append("stock", String(values.stock));
+    formData.append("image", values.file);
+    const result = await dispatch(addProduct(formData));
+    if (addProduct.fulfilled.match(result)) {
+      // navigate("/stock");
+    }
   };
 
   const showPreviewImage = () => {
