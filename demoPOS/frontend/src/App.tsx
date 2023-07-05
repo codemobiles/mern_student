@@ -12,6 +12,8 @@ import { useSelector } from "react-redux";
 import { authSelector } from "@/store/slices/authSlice";
 import StockPage from "@/components/pages/StockPage";
 import PublicRoutes from "./router/public.routes";
+import ProtectedRoutes from "./router/protected.routes";
+import ReportPage from "./components/pages/ReportPage";
 
 const drawerWidth = 240;
 
@@ -47,6 +49,8 @@ export default function App() {
   const [open, setOpen] = React.useState(true);
   const authReducer = useSelector(authSelector);
 
+  React.useEffect(() => {}, []);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -69,8 +73,13 @@ export default function App() {
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/stock" element={<StockPage />} />
               <Route path="*" element={<Navigate to="/login" />} />
+            </Route>
+
+            {/** Wrap all Route under ProtectedRoutes element */}
+            <Route path="/" element={<ProtectedRoutes isAuthented={authReducer.isAuthented} />}>
+              <Route path="/stock" element={<StockPage />} />
+              <Route path="/report" element={<ReportPage />} />
             </Route>
           </Routes>
         </Container>
