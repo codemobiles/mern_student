@@ -27,7 +27,7 @@ import { NumericFormat } from "react-number-format";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import useCopyToClipboard from "../../hooks/useCopyToClipboard";
-import StockCard from "../fragments/StockCard";
+import StockCard from "@/components/fragments/StockCard";
 
 interface QuickSearchToolbarProps {
   clearSearch: () => void;
