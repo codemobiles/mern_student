@@ -7,11 +7,13 @@ import { RootState } from "../store";
 export interface StockState {
   stockAllResult: Product[];
   stockOneResult: Product | null;
+  isLoading: boolean;
 }
 
 const initialState: StockState = {
   stockAllResult: [],
   stockOneResult: null,
+  isLoading: false,
 };
 
 // Query
@@ -61,13 +63,14 @@ const stockSlice = createSlice({
     });
 
     // // getProductById Pending
-    // builder.addCase(getProductById.pending, (state) => {
-
-    // });
+    builder.addCase(getProductById.pending, (state) => {
+      state.isLoading = true;
+    });
 
     // getProductById Success
     builder.addCase(getProductById.fulfilled, (state, action) => {
       state.stockOneResult = action.payload;
+      state.isLoading = false;
     });
   },
 });
