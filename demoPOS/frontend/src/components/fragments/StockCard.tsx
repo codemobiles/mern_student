@@ -1,4 +1,4 @@
-import { Card, Stack } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import React from "react";
 
 type Props = {
@@ -11,7 +11,18 @@ type Props = {
 export default function StockCard(props: Props) {
   return (
     <Card elevation={7}>
-      <Stack>{props.title}</Stack>
+      <Stack direction="row" justifyContent="space-between" alignItems="stretch">
+        {/* Title and subtitle */}
+        <Stack direction="column">
+          <Typography variant="h5"> {props.title}</Typography>
+          <Typography variant="body2"> {props.subtitle}</Typography>
+        </Stack>
+
+        {/* icon */}
+        <Box bgcolor={props.color}>
+          <props.icon />
+        </Box>
+      </Stack>
     </Card>
   );
 }
