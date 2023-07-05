@@ -81,6 +81,16 @@ const shopSlice = createSlice({
       state.mGiven = 0;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(getTransactions.fulfilled, (state, action) => {
+      state.transactionAllResult = action.payload;
+    });
+    builder.addCase(submitPayment.fulfilled, (state, _action) => {
+      state.mIsPaymentMade = false;
+      state.mGiven = 0;
+      state.mOrderLines = [];
+    });
+  },
 });
 
 export default shopSlice.reducer;
