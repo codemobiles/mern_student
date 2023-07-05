@@ -6,10 +6,18 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import "dayjs/locale/th";
 import { Typography } from "@mui/material";
+import { imageUrl } from "@/utils/constants";
 
 const columns: GridColDef[] = [
   { field: "product_id", headerName: "ID", width: 70 },
-  { field: "image", headerName: "Image", width: 100 },
+  {
+    field: "image",
+    headerName: "Image",
+    width: 100,
+    renderCell: ({ value }) => {
+      return <img src={imageUrl + "/images/" + value} alt="" className="w-[70px]" />;
+    },
+  },
   { field: "name", headerName: "Name", width: 500 },
   { field: "stock", headerName: "Stock", width: 130 },
   { field: "price", headerName: "Price", width: 130 },
