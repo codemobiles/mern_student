@@ -13,14 +13,14 @@ export default function StockCard(props: Props) {
     <Card elevation={7}>
       <Stack direction="row" justifyContent="space-between" alignItems="stretch">
         {/* Title and subtitle */}
-        <Stack direction="column">
+        <Stack className="m-5" direction="column">
           <Typography variant="h5"> {props.title}</Typography>
           <Typography variant="body2"> {props.subtitle}</Typography>
         </Stack>
 
         {/* icon */}
-        <Box bgcolor={props.color}>
-          <props.icon />
+        <Box bgcolor={props.color} className="flex justify-center items-center w-[50px]">
+          <props.icon className="text-white" />
         </Box>
       </Stack>
     </Card>
