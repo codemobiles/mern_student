@@ -9,6 +9,7 @@ import { Typography } from "@mui/material";
 
 const columns: GridColDef[] = [
   { field: "product_id", headerName: "ID", width: 70 },
+  { field: "image", headerName: "Image", width: 100 },
   { field: "name", headerName: "Name", width: 500 },
   { field: "stock", headerName: "Stock", width: 130 },
   { field: "price", headerName: "Price", width: 130 },
