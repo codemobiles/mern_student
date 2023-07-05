@@ -111,6 +111,9 @@ export default function StockCreatePage() {
               }}
             />
 
+            <Box>{showPreviewImage()}</Box>
+
+            {/* file browser */}
             <TextField
               sx={{ mt: 2 }}
               type="file"
