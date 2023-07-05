@@ -33,6 +33,8 @@ export default function StockCreatePage() {
     formState: { errors },
   } = useForm<Product>({ defaultValues: initialValue, resolver: yupResolver(formValidateSchema) });
 
+  const watchPreviewImage = watch("file_obj");
+
   const submit = (value: Product) => {
     alert(JSON.stringify(value));
   };
