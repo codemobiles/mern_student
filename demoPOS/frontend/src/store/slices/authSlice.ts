@@ -31,8 +31,8 @@ export const removeAsync = createAsyncThunk("auth/removeAsync", async () => {
   return -1;
 });
 
-export const login = async (user: User) => {
-  const result = await httpClient.post<LoginResult>(server.LOGIN_URL);
+export const login = createAsyncThunk("auth/login", async (user: User) => {
+  const result = await httpClient.post<LoginResult>(server.LOGIN_URL, user);
   if (result.data.result == "ok") {
     // login success
     return result.data;
@@ -40,7 +40,7 @@ export const login = async (user: User) => {
 
   // login failed
   throw Error();
-};
+});
 
 const authSlice = createSlice({
   name: "auth",
