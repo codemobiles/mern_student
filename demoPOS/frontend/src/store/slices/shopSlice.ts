@@ -94,4 +94,5 @@ const shopSlice = createSlice({
 });
 
 export default shopSlice.reducer;
+export const { removeOrder, addOrder, togglePayment } = shopSlice.actions;
 export const shopSelector = (state: RootState) => state.shopReducer;
