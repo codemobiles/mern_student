@@ -174,6 +174,8 @@ const StockEdit = () => {
     }
   };
 
+  const handleClose = () => setOpen(false);
+
   const showConfirmDialog = () => {
     return (
       <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
