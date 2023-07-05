@@ -45,7 +45,43 @@ export const submitPayment = createAsyncThunk("shop/submit", async (data: any) =
   return result.data;
 });
 
-const shopSlice = createSlice({ name: "shop", initialState, reducers: {} });
+const shopSlice = createSlice({
+  name: "shop",
+  initialState,
+  reducers: {
+    addOrder: (state, action: PayloadAction<Product>) => {
+      const product = action.payload;
+      const index = state.mOrderLines.findIndex((item) => {
+        return item._id === product._id;
+      });
+
+      if (index === -1) {
+        state.mOrderLines.unshift({ ...product, qty: 1 });
+      } else {
+        state.mOrderLines[index].qty!++;
+      }
+      updateOrder(state, state.mOrderLines);
+    },
+    removeOrder: (state, action: PayloadAction<Product>) => {
+      const product = action.payload;
+      const orderLines = state.mOrderLines;
+      const foundIndex = orderLines.indexOf(product);
+
+      orderLines.map((item: any) => {
+        if (item.product_id === product.product_id) {
+          item.qty = 1;
+        }
+        return item;
+      });
+      orderLines.splice(foundIndex, 1);
+      updateOrder(state, orderLines);
+    },
+    togglePayment: (state, _action: PayloadAction<void>) => {
+      state.mIsPaymentMade = !state.mIsPaymentMade;
+      state.mGiven = 0;
+    },
+  },
+});
 
 export default shopSlice.reducer;
 export const shopSelector = (state: RootState) => state.shopReducer;
