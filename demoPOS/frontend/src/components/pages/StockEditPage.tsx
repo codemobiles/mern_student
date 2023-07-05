@@ -14,7 +14,7 @@ import { imageUrl } from "@/utils/constants";
 import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, TextField } from "@mui/material";
+import { Box, LinearProgress, TextField } from "@mui/material";
 
 const initialValue: Product = { name: "", price: 0, stock: 0 };
 
@@ -72,6 +72,7 @@ const StockEdit = () => {
     return (
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Card>
+          <LinearProgress />
           <CardContent sx={{ padding: 4 }}>
             <Typography gutterBottom variant="h3">
               Edit Product
