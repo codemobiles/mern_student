@@ -4,13 +4,13 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "@/components/layouts/Header";
 import Menu from "@/components/layouts/Menu";
-import logo from "@/assets/images/cm_logo.png";
 import { Container } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom";
-import LoginPage from "./components/pages/LoginPage";
-import RegisterPage from "./components/pages/RegisterPage";
+import LoginPage from "@/components/pages/LoginPage";
+import RegisterPage from "@/components/pages/RegisterPage";
 import { useSelector } from "react-redux";
-import { authSelector } from "./store/slices/authSlice";
+import { authSelector } from "@/store/slices/authSlice";
+import StockPage from "@/components/pages/StockPage";
 
 const drawerWidth = 240;
 
@@ -66,6 +66,7 @@ export default function App() {
             <Route path="/" element={<Navigate to="/login" />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/stock" element={<StockPage />} />
             <Route path="*" element={<Navigate to="/login" />} />
           </Routes>
         </Container>

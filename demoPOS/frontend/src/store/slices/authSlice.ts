@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 import { LoginResult, RegisterResult } from "@/types/auth-result.type";
+import { User } from "@/types/user.type";
+import { httpClient } from "@/utils/HttpClient";
+import { server } from "@/utils/constants";
 
 type AuthState = {
   count: number;
@@ -27,6 +30,17 @@ export const removeAsync = createAsyncThunk("auth/removeAsync", async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return -1;
 });
+
+export const login = async (user: User) => {
+  const result = await httpClient.post<LoginResult>(server.LOGIN_URL);
+  if (result.data.result == "ok") {
+    // login success
+    return result.data;
+  }
+
+  // login failed
+  throw Error();
+};
 
 const authSlice = createSlice({
   name: "auth",
