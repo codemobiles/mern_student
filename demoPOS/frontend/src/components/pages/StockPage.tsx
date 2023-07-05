@@ -5,13 +5,26 @@ import { useAppDispatch } from "@/store/store";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import "dayjs/locale/th";
+import { Typography } from "@mui/material";
 
 const columns: GridColDef[] = [
   { field: "product_id", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name", width: 500 },
   { field: "stock", headerName: "Stock", width: 130 },
   { field: "price", headerName: "Price", width: 130 },
-  { field: "created", headerName: "Created", width: 230, renderCell: ({ value }) => <span>xxx</span> },
+  {
+    field: "created",
+    headerName: "Created",
+    width: 230,
+    renderCell: ({ value }) => {
+      return (
+        <Typography variant="body1">
+          {/* 543 diff thai years */}
+          {dayjs(value).locale("th").add(543, "year").format("DD MMMM YYYY")}
+        </Typography>
+      );
+    },
+  },
 ];
 
 export default function StockPage() {
