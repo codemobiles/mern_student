@@ -28,6 +28,15 @@ const stockSlice = createSlice({
   name: "stock",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(getProducts.fulfilled, (state, action) => {
+      state.stockAllResult = action.payload;
+    });
+
+    builder.addCase(getProducts.rejected, (state) => {
+      state.stockAllResult = [];
+    });
+  },
 });
 
 export default stockSlice.reducer;
