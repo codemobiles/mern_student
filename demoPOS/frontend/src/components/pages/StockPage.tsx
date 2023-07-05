@@ -3,13 +3,15 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { stockSelector, getProducts } from "@/store/slices/stockSlice";
 import { useAppDispatch } from "@/store/store";
 import { useSelector } from "react-redux";
+import dayjs from "dayjs";
+import "dayjs/locale/th";
 
 const columns: GridColDef[] = [
   { field: "product_id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 330 },
+  { field: "name", headerName: "Name", width: 500 },
   { field: "stock", headerName: "Stock", width: 130 },
   { field: "price", headerName: "Price", width: 130 },
-  { field: "created", headerName: "Created", width: 130 },
+  { field: "created", headerName: "Created", width: 230 },
 ];
 
 export default function StockPage() {
@@ -32,7 +34,6 @@ export default function StockPage() {
           },
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
       />
     </div>
   );
