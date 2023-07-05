@@ -71,19 +71,20 @@ function QuickSearchToolbar(props: QuickSearchToolbarProps) {
           },
         }}
       />
-      <Fab
-        color="primary"
-        aria-label="add"
-        component={Link}
-        to="/stock/create"
-        sx={{
-          position: "absolute",
-          top: 10,
-          right: 10,
-        }}
-      >
-        <Add />
-      </Fab>
+
+      <Link to="/stock/create">
+        <Fab
+          color="primary"
+          aria-label="add"
+          sx={{
+            position: "absolute",
+            top: 10,
+            right: 10,
+          }}
+        >
+          <Add />
+        </Fab>
+      </Link>
     </Box>
   );
 }
@@ -96,7 +97,8 @@ const Stock = () => {
 
   const [openDialog, setOpenDialog] = useState<boolean>(false);
   const [selectedProduct, setSelectedProduct] = useState<Product>();
-  const [value, setValue] = useDebounce("", 300);
+  const [value, setValue] = useDebounce("", 1000);
+  // const [value, setValue] = useState("");
 
   useEffect(() => {
     dispatch(getProducts(value));
@@ -271,7 +273,7 @@ const Stock = () => {
         columns={stockColumns}
         componentsProps={{
           toolbar: {
-            onChange: (event: React.ChangeEvent<HTMLInputElement>) => console.log(event.target.value),
+            onChange: (event: React.ChangeEvent<HTMLInputElement>) => setValue(event.target.value),
             clearSearch: () => setValue(""),
           },
         }}
