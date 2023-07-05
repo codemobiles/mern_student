@@ -14,7 +14,7 @@ import { imageUrl } from "@/utils/constants";
 import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, LinearProgress, TextField } from "@mui/material";
+import { Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, LinearProgress, TextField } from "@mui/material";
 
 const initialValue: Product = { name: "", price: 0, stock: 0 };
 
@@ -173,7 +173,31 @@ const StockEdit = () => {
     }
   };
 
-  return <Box>{showForm()}</Box>;
+  const showConfirmDialog = () => {
+    return (
+      <Dialog open={open} onClose={handleClose} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleClose} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
+
+  return (
+    <Box>
+      {showForm()}
+      {showConfirmDialog()}
+    </Box>
+  );
 };
 
 export default StockEdit;
