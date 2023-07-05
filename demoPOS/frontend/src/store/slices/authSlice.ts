@@ -58,6 +58,10 @@ const authSlice = createSlice({
   initialState,
   // synchronous
   reducers: {
+    logout: (state: AuthState) => {
+      localStorage.clear();
+      state.isAuthented = false;
+    },
     add: (state) => {
       state.count++;
     },

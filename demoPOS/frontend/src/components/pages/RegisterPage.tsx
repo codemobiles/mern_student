@@ -110,7 +110,7 @@ const Register = () => {
           )}
         ></Controller>
 
-        {/* {authReducer.isError && <Alert severity="error">Register failed</Alert>} */}
+        {authReducer.isError && <Alert severity="error">Register failed</Alert>}
         <Button sx={classes.submitBtn} type="submit" fullWidth variant="contained" color="primary">
           Create
         </Button>
