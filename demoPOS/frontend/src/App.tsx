@@ -9,6 +9,8 @@ import { Container } from "@mui/material";
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
+import { useSelector } from "react-redux";
+import { authSelector } from "./store/slices/authSlice";
 
 const drawerWidth = 240;
 
@@ -40,8 +42,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function App() {
   const [open, setOpen] = React.useState(true);
+  const authReducer = useSelector(authSelector);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -54,8 +57,8 @@ export default function PersistentDrawerLeft() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      {false && <Header open={open} handleDrawerOpen={handleDrawerOpen} />}
-      {false && <Menu open={open} handleDrawerClose={handleDrawerClose} />}
+      {authReducer.isAuthented && <Header open={open} handleDrawerOpen={handleDrawerOpen} />}
+      {authReducer.isAuthented && <Menu open={open} handleDrawerClose={handleDrawerClose} />}
       <Main open={open}>
         <Container>
           <DrawerHeader />
