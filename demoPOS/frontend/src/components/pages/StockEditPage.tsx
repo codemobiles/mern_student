@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useMatch, useNavigate } from "react-router-dom";
 import { editProduct, getProductById, stockSelector } from "@/store/slices/stockSlice";
@@ -29,6 +29,7 @@ const StockEdit = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const stockReducer = useSelector(stockSelector);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (match?.params.id) {
