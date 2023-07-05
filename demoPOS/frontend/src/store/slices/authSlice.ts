@@ -63,6 +63,22 @@ const authSlice = createSlice({
     builder.addCase(removeAsync.fulfilled, (state, action) => {
       state.count = state.count + action.payload;
     });
+
+    // login success
+    builder.addCase(login.fulfilled, (state, action) => {
+      state.isAuthented = true;
+      state.loginResult = action.payload;
+      state.isError = false;
+      state.isAuthenticating = false;
+    });
+
+    // login failed
+    builder.addCase(login.rejected, (state) => {
+      state.isAuthented = false;
+      state.loginResult = undefined;
+      state.isError = true;
+      state.isAuthenticating = false;
+    });
   },
 });
 
