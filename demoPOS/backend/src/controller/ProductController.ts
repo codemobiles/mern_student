@@ -21,22 +21,24 @@ export class ProductController {
   async add(req: Request, res: Response, next: NextFunction) {
     const form = formidable({});
     form.parse(req, async (error, fields: any, files) => {
-      if (error) {
-        res.json({ result: "nok", error });
-        return;
-      }
+      return { error, fields, files };
 
-      const newProduct = new Products();
-      newProduct.product_id = await generateSeq("product_id");
-      newProduct.name = fields.name;
-      newProduct.stock = Number(fields.stock);
-      newProduct.price = Number(fields.price);
+      // if (error) {
+      //   res.json({ result: "nok", error });
+      //   return;
+      // }
 
-      let doc: Products = await this.productRepo.save(newProduct);
-      const fileName = getFileName(files, doc.product_id.toString());
-      await uploadImage(files, fileName);
-      await this.productRepo.update({ _id: doc._id }, { image: fileName });
-      res.json({ result: "ok", message: { ...doc, image: fileName } });
+      // const newProduct = new Products();
+      // newProduct.product_id = await generateSeq("product_id");
+      // newProduct.name = fields.name;
+      // newProduct.stock = Number(fields.stock);
+      // newProduct.price = Number(fields.price);
+
+      // let doc: Products = await this.productRepo.save(newProduct);
+      // const fileName = getFileName(files, doc.product_id.toString());
+      // await uploadImage(files, fileName);
+      // await this.productRepo.update({ _id: doc._id }, { image: fileName });
+      // res.json({ result: "ok", message: { ...doc, image: fileName } });
     });
   }
 
