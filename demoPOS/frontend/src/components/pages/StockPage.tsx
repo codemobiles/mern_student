@@ -11,7 +11,7 @@ const columns: GridColDef[] = [
   { field: "name", headerName: "Name", width: 500 },
   { field: "stock", headerName: "Stock", width: 130 },
   { field: "price", headerName: "Price", width: 130 },
-  { field: "created", headerName: "Created", width: 230 },
+  { field: "created", headerName: "Created", width: 230, renderCell: ({ value }) => <span>xxx</span> },
 ];
 
 export default function StockPage() {
