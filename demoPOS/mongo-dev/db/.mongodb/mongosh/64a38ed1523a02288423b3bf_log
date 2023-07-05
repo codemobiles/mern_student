@@ -22,3 +22,4 @@
 {"t":{"$date":"2023-07-04T03:15:29.842Z"},"s":"I","c":"MONGOSH-SNIPPETS","id":1000000027,"ctx":"snippets","msg":"Fetching snippet index done"}
 {"t":{"$date":"2023-07-04T03:15:29.845Z"},"s":"I","c":"MONGOSH","id":1000000002,"ctx":"repl","msg":"Started REPL","attr":{"version":"1.8.0"}}
 {"t":{"$date":"2023-07-04T03:15:32.278Z"},"s":"I","c":"MONGOSH","id":1000000009,"ctx":"shell-api","msg":"Used \"show\" command","attr":{"method":"show dbs"}}
+{"t":{"$date":"2023-07-04T09:23:08.167Z"},"s":"I","c":"MONGOSH","id":1000000045,"ctx":"analytics","msg":"Flushed outstanding data","attr":{"flushError":null,"flushDuration":1}}

@@ -23,7 +23,7 @@ export const Routes = [
   },
   {
     method: "get",
-    route: "/products",
+    route: "/product",
     controller: ProductController,
     action: "all",
   },
