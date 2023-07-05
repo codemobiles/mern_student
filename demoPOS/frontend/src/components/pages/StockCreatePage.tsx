@@ -50,6 +50,15 @@ export default function StockCreatePage() {
               }}
             />
           </CardContent>
+
+          <CardActions>
+            <Button fullWidth variant="contained" color="primary" type="submit" sx={{ marginRight: 1 }}>
+              Create
+            </Button>
+            <Button fullWidth component={Link} to="/stock" color="info" variant="outlined">
+              Cancl
+            </Button>
+          </CardActions>
         </Card>
       </form>
     </>
