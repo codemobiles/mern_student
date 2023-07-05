@@ -26,13 +26,11 @@ export default function StockCreatePage() {
   return (
     <>
       <form>
-        <Card>
+        <Card elevation={7}>
           <CardContent>
             <Typography gutterBottom variant="h3">
               Create Product
             </Typography>
-          
-
           </CardContent>
         </Card>
       </form>
