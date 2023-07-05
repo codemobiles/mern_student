@@ -24,7 +24,7 @@ export default function StockCreatePage() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const initialValue: Product = { name: "", price: 1500, stock: 9999 };
+  const initialValue: Product = { name: "XXX", price: 1500, stock: 9999 };
   const {
     control,
     handleSubmit,
