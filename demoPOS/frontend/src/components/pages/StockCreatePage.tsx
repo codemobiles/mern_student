@@ -39,7 +39,7 @@ export default function StockCreatePage() {
 
   const showPreviewImage = () => {
     if (watchPreviewImage) {
-      return <img alt="" src={watchPreviewImage} style={{ height: 100 }} />;
+      return <img alt="" src={watchPreviewImage} className="h-[100px]" />;
     }
   };
 
