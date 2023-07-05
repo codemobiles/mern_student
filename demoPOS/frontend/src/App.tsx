@@ -9,11 +9,12 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "@/components/pages/LoginPage";
 import RegisterPage from "@/components/pages/RegisterPage";
 import { useSelector } from "react-redux";
-import { authSelector } from "@/store/slices/authSlice";
+import { authSelector, relogin } from "@/store/slices/authSlice";
 import StockPage from "@/components/pages/StockPage";
 import PublicRoutes from "./router/public.routes";
 import ProtectedRoutes from "./router/protected.routes";
 import ReportPage from "./components/pages/ReportPage";
+import { useAppDispatch } from "./store/store";
 
 const drawerWidth = 240;
 
@@ -48,8 +49,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function App() {
   const [open, setOpen] = React.useState(true);
   const authReducer = useSelector(authSelector);
+  const dispatch = useAppDispatch();
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    // Called when component is created
+    dispatch(relogin());
+  }, [dispatch]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -58,6 +63,10 @@ export default function App() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  if (authReducer.isAuthenticating) {
+    return <></>;
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
