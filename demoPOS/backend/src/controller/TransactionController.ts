@@ -8,7 +8,7 @@ export class TransactionController {
   private transRepo = AppDataSource.getMongoRepository(Transactions);
 
   async query(req, res, next) {
-    const data = await this.transRepo.find();
+    const data = await this.transRepo.aggregate([]).toArray();
     res.json(data);
   }
 
