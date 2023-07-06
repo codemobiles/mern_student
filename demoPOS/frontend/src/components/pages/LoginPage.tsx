@@ -12,9 +12,8 @@ import Typography from "@mui/material/Typography";
 import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import axios from "axios";
 import { useSelector } from "react-redux";
-import { add, addAsync, authSelector, login, remove, removeAsync } from "@/store/slices/authSlice";
+import { addAsync, authSelector, login, removeAsync } from "@/store/slices/authSlice";
 import { useAppDispatch } from "@/store/store";
 
 const formValidateSchema = Yup.object().shape({

@@ -11,7 +11,11 @@ import TextField from "@mui/material/TextField";
 import { Box } from "@mui/system";
 import React from "react";
 
-const Payment = (props: any) => {
+type PaymentProps = {
+  order: string;
+};
+
+const Payment = (props: PaymentProps) => {
   const shopReducer = useSelector(shopSelector);
   const dispatch = useAppDispatch();
   const [given, setGiven] = React.useState(0);

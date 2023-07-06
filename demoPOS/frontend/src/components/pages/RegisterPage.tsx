@@ -16,7 +16,6 @@ import { Controller, useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { httpClient } from "@/utils/HttpClient";
 import { authSelector, register } from "@/store/slices/authSlice";
 import { useAppDispatch } from "@/store/store";
 // add any to fix error temporary

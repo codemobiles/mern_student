@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useMatch, useNavigate } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import { editProduct, getProductById, stockSelector } from "@/store/slices/stockSlice";
 import { useAppDispatch } from "@/store/store";
 import { Product } from "@/types/product.type";
@@ -14,7 +14,7 @@ import { imageUrl } from "@/utils/constants";
 import { useForm, Controller } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, LinearProgress, TextField } from "@mui/material";
+import { Box, Dialog, DialogActions, DialogTitle, LinearProgress, TextField } from "@mui/material";
 
 const initialValue: Product = { name: "", price: 0, stock: 0 };
 
