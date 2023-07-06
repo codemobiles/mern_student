@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { cloneProduct, Products } from "../entity/Products";
 import { AppDataSource } from "../data-source";
 import formidable, { errors as formidableErrors } from "formidable";
+import { firstValues } from "formidable/src/helpers/firstValues.js";
 
 import { deleteFile, generateSeq, getFileName, uploadImage } from "../utils/cm-util";
 
@@ -19,10 +20,11 @@ export class ProductController {
   }
 
   async add(req: Request, res: Response, next: NextFunction) {
-    const form = formidable({});
+    const form = formidable({ multiples: true });
     form.parse(req, async (error, fields: any, files) => {
-      console.log(JSON.stringify({ error, fields, files }));
-      return res.json({ error, fields, files });
+      return res.json({ error, 
+        fields: firstValues(form, fields), 
+        files: firstValues(form, files) });
 
       // if (error) {
       //   res.json({ result: "nok", error });
