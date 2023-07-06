@@ -26,6 +26,7 @@ export class TransactionController {
         { $addFields: { staff_id: "$staff.username" } },
         { $project: { staff: 0 } },
       ])
+      .sort({ timestamp: -1 })
       .toArray();
     res.json(data);
   }
