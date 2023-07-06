@@ -7,6 +7,11 @@ import { generateSeq } from "../utils/cm-util";
 export class TransactionController {
   private transRepo = AppDataSource.getMongoRepository(Transactions);
 
+  async query(req, res, next) {
+    const data = await this.transRepo.find();
+    res.json(data);
+  }
+
   async all(req: Request, res: Response, next: NextFunction) {
     const data = await this.transRepo
       .aggregate([
