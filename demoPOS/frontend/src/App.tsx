@@ -20,7 +20,7 @@ import StockCreatePage from "./components/pages/StockCreatePage";
 import StockEditPage from "./components/pages/StockEditPage";
 import TransactionPage from "./components/pages/TransactionPage";
 import { ThemeProvider } from "@emotion/react";
-import { blue } from "@mui/material/colors";
+import { blue, purple } from "@mui/material/colors";
 import backgroundMenuImage from "@/assets/images/background_menu.jpg";
 
 const drawerWidth = 240;
@@ -63,6 +63,9 @@ export default function App() {
         styleOverrides: {
           root: {
             borderRadius: 30,
+            borderColor: "#F0F",
+            borderWidth: 2,
+            borderStyle: "solid",
           },
         },
       },
