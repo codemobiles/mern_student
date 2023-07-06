@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 type Props = {};
 
 export default function TransactionPage({}: Props) {
-  return <div>TransactionPage</div>;
+
+  // useEffect
+  // getTransactions
+
+  return <div>TransactionPage {JSON.stringify(transactionAllResult)}</div>;
 }
