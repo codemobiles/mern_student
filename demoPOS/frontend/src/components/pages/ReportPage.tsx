@@ -104,9 +104,9 @@ const Report = () => {
   };
 
   useEffect(() => {
-    setChartData1(getRandomInt());
-    setChartData2(getRandomInt());
-  }, []);
+    dispatch(setChartData1(getRandomInt()));
+    dispatch(setChartData2(getRandomInt()));
+  }, [dispatch]);
 
   return (
     <Paper sx={{ padding: 4 }}>
