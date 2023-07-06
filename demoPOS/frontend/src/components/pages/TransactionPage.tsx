@@ -1,11 +1,15 @@
+import { getTransactions, shopSelector } from "@/store/slices/shopSlice";
+import { useAppDispatch } from "@/store/store";
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-type Props = {};
+export default function TransactionPage() {
+  const shopReducer = useSelector(shopSelector);
+  const dispatch = useAppDispatch();
 
-export default function TransactionPage({}: Props) {
+  useEffect(() => {
+    dispatch(getTransactions());
+  }, [dispatch]);
 
-  // useEffect
-  // getTransactions
-
-  return <div>TransactionPage {JSON.stringify(transactionAllResult)}</div>;
+  return <div>TransactionPage {JSON.stringify(shopReducer.transactionAllResult)}</div>;
 }
