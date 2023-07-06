@@ -1,3 +1,4 @@
+import { Product } from "@/types/product.type";
 import React from "react";
 
 type Props = {
@@ -5,5 +6,14 @@ type Props = {
 };
 
 export default function Payment({ order }: Props) {
-  return <div>Payment {order}</div>;
+  const orderList = JSON.parse(order) as Product[];
+
+  return (
+    <div>
+      Payment {orderList[0].name}
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+  );
 }
