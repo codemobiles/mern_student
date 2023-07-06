@@ -17,7 +17,13 @@ AppDataSource.initialize()
     Routes.forEach((route) => {
       (app as any)[route.method](
         "/api/v2" + route.route,
-        (req, res, next) => {},
+        (req, res, next) => {
+          if (req.query.token1 == "1234") {
+            next();
+          } else {
+            res.json({ result: "nok", message: "no token" });
+          }
+        },
 
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](req, res, next);
