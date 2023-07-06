@@ -77,6 +77,12 @@ const transactionRoutes = [
   },
   {
     method: "get",
+    route: "/query",
+    controller: TransactionController,
+    action: "query",
+  },
+  {
+    method: "get",
     route: "/transaction/between/:startDate/:endDate",
     controller: TransactionController,
     action: "between",
