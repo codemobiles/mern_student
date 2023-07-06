@@ -29,7 +29,7 @@ export const getProducts = createAsyncThunk("stock/getAll", async (keyword: stri
 
 // Query by Id
 export const getProductById = createAsyncThunk("stock/getById", async (id: string): Promise<Product> => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   const result = await await httpClient.get(`${server.PRODUCT_URL}/id/${id}`);
   return result.data;
 });

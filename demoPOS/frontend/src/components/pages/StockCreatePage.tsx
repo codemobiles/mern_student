@@ -43,7 +43,7 @@ export default function StockCreatePage() {
     formData.append("image", values.file);
     const result = await dispatch(addProduct(formData));
     if (addProduct.fulfilled.match(result)) {
-      // navigate("/stock");
+      navigate("/stock");
     }
   };
 
