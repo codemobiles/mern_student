@@ -56,16 +56,15 @@ export class ProductController {
     }
 
     // update database
-    return res.json({ fields, files });
-    // await this.productRepo.findOneAndUpdate(
-    //   { product_id: Number(fields.id) },
-    //   {
-    //     $set: cloneProduct(fields),
-    //   },
-    //   { upsert: false } // create if not exist
-    // );
+    await this.productRepo.findOneAndUpdate(
+      { product_id: Number(fields.id) },
+      {
+        $set: cloneProduct(fields),
+      },
+      { upsert: false } // create if not exist
+    );
 
-    // return res.json({ result: "ok" });
+    res.json({ result: "ok" });
   }
 
   async one(req, res: Response, next: NextFunction) {
