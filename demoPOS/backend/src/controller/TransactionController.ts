@@ -7,6 +7,8 @@ import { generateSeq } from "../utils/cm-util";
 export class TransactionController {
   private transRepo = AppDataSource.getMongoRepository(Transactions);
 
+  // [(P1,P2,P3), (C1,C2,C3)]
+
   async query(req, res, next) {
     const data = await this.transRepo
       .aggregate([
@@ -19,6 +21,7 @@ export class TransactionController {
             as: "staff",
           },
         },
+        { $unwind: "$staff" },
       ])
       .toArray();
     res.json(data);
