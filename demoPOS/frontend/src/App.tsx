@@ -20,7 +20,8 @@ import StockCreatePage from "./components/pages/StockCreatePage";
 import StockEditPage from "./components/pages/StockEditPage";
 import TransactionPage from "./components/pages/TransactionPage";
 import { ThemeProvider } from "@emotion/react";
-import { yellow } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
+import backgroundMenuImage from "@/assets/images/background_menu.jpg";
 
 const drawerWidth = 240;
 
@@ -57,9 +58,40 @@ export default function App() {
   const authReducer = useSelector(authSelector);
   const dispatch = useAppDispatch();
   const theme = createTheme({
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 30,
+          },
+        },
+      },
+      MuiDrawer: {
+        styleOverrides: {
+          paper: {
+            backgroundImage: `url(${backgroundMenuImage})`,
+            backgroundRepeat: "no-repeat",
+            backgroundColor: "#f2fcff",
+            backgroundPosition: "bottom",
+            width: drawerWidth,
+          },
+        },
+      },
+    },
     spacing: 8,
+    typography: {
+      fontFamily: "Chakra Petch",
+      // fontFamily: "Roboto",
+      fontWeightLight: 100,
+      fontWeightRegular: 400,
+      fontWeightMedium: 500,
+      fontWeightBold: 600,
+    },
     palette: {
-      primary: { main: "#C1272D" },
+      primary: import.meta.env.VITE_IS_PRODUCTION === "1" ? { main: "#C1272D" } : blue,
+      background: {
+        default: "#B8F4FF33",
+      },
     },
   });
 
