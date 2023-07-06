@@ -13,24 +13,28 @@ AppDataSource.initialize()
     app.use(cors());
     app.use(express.static(process.env.ROOT_PATH + "/uploaded"));
 
+    const interceptor1 = (req, res, next) => {
+      if (req.query.token1 == "1234") {
+        next();
+      } else {
+        res.json({ result: "nok", message: "no token1" });
+      }
+    };
+
+    const interceptor2 = (req, res, next) => {
+      if (req.query.token2 == "555") {
+        next();
+      } else {
+        res.json({ result: "nok", message: "no token2" });
+      }
+    };
+
     // register express routes from defined application routes
     Routes.forEach((route) => {
       (app as any)[route.method](
         "/api/v2" + route.route,
-        (req, res, next) => {
-          if (req.query.token1 == "1234") {
-            next();
-          } else {
-            res.json({ result: "nok", message: "no token1" });
-          }
-        },
-        (req, res, next) => {
-          if (req.query.token2 == "555") {
-            next();
-          } else {
-            res.json({ result: "nok", message: "no token2" });
-          }
-        },
+        interceptor1,
+        interceptor2,
 
         (req: Request, res: Response, next: Function) => {
           const result = new (route.controller as any)()[route.action](req, res, next);
