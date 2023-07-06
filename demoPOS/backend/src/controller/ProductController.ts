@@ -42,27 +42,29 @@ export class ProductController {
   }
 
   async update(req: Request, res: Response, next: NextFunction) {
-    const form = formidable({});
+    // parse
+    const form = formidable({ multiples: true });
+    const [_fields, _files] = await form.parse(req);
+    const fields = firstValues(form, _fields);
+    const files = firstValues(form, _files);
 
+    // check if there is updated image
+    const fileName = getFileName(files, fields.id);
+    if (fileName) {
+      fields.image = fileName;
+      await uploadImage(files, fileName);
+    }
 
-    
-    form.parse(req, async (error, fields: any, files) => {
-      const fileName = getFileName(files, fields.id);
-      if (fileName) {
-        fields.image = fileName;
-        await uploadImage(files, fileName);
-      }
+    // update database
+    await this.productRepo.findOneAndUpdate(
+      { product_id: Number(fields.id) },
+      {
+        $set: cloneProduct(fields),
+      },
+      { upsert: false } // create if not exist
+    );
 
-      await this.productRepo.findOneAndUpdate(
-        { product_id: Number(fields.id) },
-        {
-          $set: cloneProduct(fields),
-        },
-        { upsert: false } // create if not exist
-      );
-
-      res.json({ result: "ok" });
-    });
+    return res.json({ result: "ok" });
   }
 
   async one(req, res: Response, next: NextFunction) {
