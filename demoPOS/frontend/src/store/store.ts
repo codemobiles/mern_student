@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import authReducer from "@/store/slices/authSlice";
 import stockReducer from "@/store/slices/stockSlice";
 import shopReducer from "@/store/slices/shopSlice";
+import reportReducer from "@/store/slices/reportSlice";
 
 let store;
 
 export function getStore() {
   if (!store) {
     store = configureStore({
-      reducer: { authReducer, stockReducer, shopReducer },
+      reducer: { authReducer, stockReducer, shopReducer, reportReducer },
     });
   }
 
