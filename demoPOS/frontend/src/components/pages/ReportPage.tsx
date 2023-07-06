@@ -1,23 +1,17 @@
+import { getRandomInt, reportSelector, setChartData1, setChartData2, setChartType } from "@/store/slices/reportSlice";
+import { useAppDispatch } from "@/store/store";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { Box, Button, ButtonGroup, IconButton, Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import "chart.js/auto";
-import { ChartData, ChartOptions, ChartType } from "chart.js/auto";
-import { useEffect, useState } from "react";
+import { ChartData, ChartOptions } from "chart.js/auto";
+import { useEffect } from "react";
 import { Chart } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 const Report = () => {
-  const [chartType, setChartType] = useState<ChartType>("line");
-  const [chartData1, setChartData1] = useState([]);
-  const [chartData2, setChartData2] = useState([]);
-
-  function getRandomInt(): any {
-    const randoms = [];
-    for (let index = 0; index < 8; index++) {
-      randoms.push(Math.floor(Math.random() * (50000 - 5 + 1)) + 5);
-    }
-    return randoms;
-  }
+  const dispatch = useAppDispatch();
+  const reportReducer = useSelector(reportSelector);
 
   const data: ChartData = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -49,7 +43,7 @@ const Report = () => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: chartData1,
+        data: reportReducer.chartData1,
       },
       {
         label: "Revenue 2023",
@@ -71,7 +65,7 @@ const Report = () => {
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: chartData2,
+        data: reportReducer.chartData2,
       },
     ],
   };
@@ -118,27 +112,27 @@ const Report = () => {
     <Paper sx={{ padding: 4 }}>
       <Typography variant="h1">Sale Chart</Typography>
       <ButtonGroup size="large" color="primary" aria-label="large outlined primary button group">
-        <Button variant={chartType === "line" ? "contained" : "outlined"} onClick={() => setChartType("line")}>
+        <Button variant={reportReducer.chartType === "line" ? "contained" : "outlined"} onClick={() => dispatch(setChartType("line"))}>
           Line
         </Button>
-        <Button variant={chartType === "bar" ? "contained" : "outlined"} onClick={() => setChartType("bar")}>
+        <Button variant={reportReducer.chartType === "bar" ? "contained" : "outlined"} onClick={() => dispatch(setChartType("bar"))}>
           Bar
         </Button>
-        <Button variant={chartType === "pie" ? "contained" : "outlined"} onClick={() => setChartType("pie")}>
+        <Button variant={reportReducer.chartType === "pie" ? "contained" : "outlined"} onClick={() => dispatch(setChartType("pie"))}>
           Pie
         </Button>
       </ButtonGroup>
       <IconButton
         aria-label="refresh"
         onClick={() => {
-          setChartData1(getRandomInt());
-          setChartData2(getRandomInt());
+          dispatch(setChartData1(getRandomInt()));
+          dispatch(setChartData2(getRandomInt()));
         }}
       >
         <RefreshIcon />
       </IconButton>
       <Box sx={{ height: "50vh" }}>
-        <Chart type={chartType} data={data} width="100%" options={chartOption} />
+        <Chart type={reportReducer.chartType} data={data} width="100%" options={chartOption} />
       </Box>
     </Paper>
   );
