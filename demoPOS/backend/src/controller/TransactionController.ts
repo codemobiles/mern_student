@@ -8,7 +8,19 @@ export class TransactionController {
   private transRepo = AppDataSource.getMongoRepository(Transactions);
 
   async query(req, res, next) {
-    const data = await this.transRepo.aggregate([{ $match: { total: { $gt: 1000 } } }]).toArray();
+    const data = await this.transRepo
+      .aggregate([
+        { $match: { total: { $lt: 1000 } } },
+        {
+          $lookup: {
+            from: "users",
+            localField: "staff_id",
+            foreignField: "_id",
+            as: "staff",
+          },
+        },
+      ])
+      .toArray();
     res.json(data);
   }
 
