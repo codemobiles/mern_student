@@ -3,6 +3,7 @@ import { Users } from "../entity/Users";
 import { AppDataSource } from "../data-source";
 import * as bcrypt from "bcryptjs";
 import { savedValue } from "../utils/cm-util";
+import jwt from "../utils/jwt";
 // import jwt from "./../utils/jwt";
 
 export class UserController {
@@ -37,12 +38,12 @@ export class UserController {
       if (doc) {
         let isPasswordValid = await bcrypt.compare(password, doc.password);
         if (isPasswordValid) {
-          //   const payload = {
-          //     id: doc._id,
-          //     level: doc.level,
-          //     username: doc.username,
-          //   };
-          let token = "1234"; // jwt.sign(payload);
+          const payload = {
+            id: doc._id,
+            level: doc.level,
+            username: doc.username,
+          };
+          let token = jwt.sign(payload);
 
           return { result: "ok", token, message: "success" };
         } else {
