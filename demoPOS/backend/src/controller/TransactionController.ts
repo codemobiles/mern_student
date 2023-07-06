@@ -23,6 +23,8 @@ export class TransactionController {
         },
         { $unwind: "$staff" },
         { $project: { "staff.password": 0 } },
+        { $addFields: { staff_id: "$staff.username" } },
+        { $project: { staff: 0 } },
       ])
       .toArray();
     res.json(data);
