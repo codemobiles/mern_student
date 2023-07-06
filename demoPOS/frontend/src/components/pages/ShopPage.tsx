@@ -169,7 +169,7 @@ const Shop = () => {
   }, [dispatch]);
 
   return (
-    <Grid container spacing={2} sx={{ height: "80vh", marginTop: 10 }}>
+    <Grid container spacing={2} sx={{ height: "80vh" }}>
       {/* Left section */}
       <Grid item xs={8} sx={{ overflow: "hidden" }}>
         {shopReducer.mIsPaymentMade ? renderPayment() : renderProductRows()}

@@ -20,6 +20,7 @@ import StockCreatePage from "./components/pages/StockCreatePage";
 import StockEditPage from "./components/pages/StockEditPage";
 import TransactionPage from "./components/pages/TransactionPage";
 import { ThemeProvider } from "@emotion/react";
+import { yellow } from "@mui/material/colors";
 
 const drawerWidth = 240;
 
@@ -57,6 +58,9 @@ export default function App() {
   const dispatch = useAppDispatch();
   const theme = createTheme({
     spacing: 8,
+    palette: {
+      primary: { main: "#C1272D" },
+    },
   });
 
   React.useEffect(() => {
