@@ -25,9 +25,7 @@ axios.interceptors.response.use(
   },
   async (error) => {
     console.log(JSON.stringify(error, undefined, 2));
-    if (error.status == 500) {
-      getStore().dispatch(logout());
-    }
+    getStore().dispatch(logout());
   }
 );
 
