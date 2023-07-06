@@ -63,8 +63,8 @@ export default function App() {
         styleOverrides: {
           root: {
             borderRadius: 30,
-            borderColor: "#F0F",
-            borderWidth: 2,
+            borderColor: "#eee",
+            borderWidth: 1,
             borderStyle: "solid",
           },
         },
