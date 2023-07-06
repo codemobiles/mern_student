@@ -20,7 +20,7 @@ import StockCreatePage from "./components/pages/StockCreatePage";
 import StockEditPage from "./components/pages/StockEditPage";
 import TransactionPage from "./components/pages/TransactionPage";
 import { ThemeProvider } from "@emotion/react";
-import { blue, purple } from "@mui/material/colors";
+import { blue } from "@mui/material/colors";
 import backgroundMenuImage from "@/assets/images/background_menu.jpg";
 
 const drawerWidth = 240;

@@ -62,7 +62,7 @@ const StockEdit = () => {
     if (values.file) {
       formData.append("image", values.file);
     }
-    dispatch(editProduct(formData)).then((result) => {
+    dispatch(editProduct(formData)).then((result: any) => {
       if (editProduct.fulfilled.match(result)) {
         navigate("/stock");
       }

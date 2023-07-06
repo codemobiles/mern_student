@@ -5,7 +5,7 @@ import stockReducer from "@/store/slices/stockSlice";
 import shopReducer from "@/store/slices/shopSlice";
 import reportReducer from "@/store/slices/reportSlice";
 
-let store;
+let store: any = undefined;
 
 export function getStore() {
   if (!store) {

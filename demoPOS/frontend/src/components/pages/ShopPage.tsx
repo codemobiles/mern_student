@@ -70,14 +70,14 @@ const Shop = () => {
   };
 
   const isSelectedItem = (product: Product) => {
-    const index = shopReducer.mOrderLines.findIndex((item) => {
+    const index = shopReducer.mOrderLines.findIndex((item: any) => {
       return item._id === product._id;
     });
     return index !== -1;
   };
 
   const getOrderDetail = (id: number) => {
-    const index = shopReducer.mOrderLines.findIndex((item) => item.product_id === id);
+    const index = shopReducer.mOrderLines.findIndex((item: any) => item.product_id === id);
 
     return shopReducer.mOrderLines[index];
   };
@@ -85,7 +85,7 @@ const Shop = () => {
   const renderOrderRows = () => {
     const { mOrderLines } = shopReducer;
 
-    return mOrderLines.map((item) => (
+    return mOrderLines.map((item: any) => (
       <ListItem button divider sx={{ height: 100 }}>
         <Box
           sx={{
@@ -122,7 +122,7 @@ const Shop = () => {
       <Container sx={{ height: "80vh", overflowY: "scroll", padding: 1 }}>
         <Grid container spacing={1} sx={{ pt: 1 }}>
           {stockAllResult !== null &&
-            stockAllResult.map((item, i) => (
+            stockAllResult.map((item: any, i: number) => (
               <Grid key={i} item xs={3} onClick={() => dispatch(addOrder(item))} style={{ cursor: "pointer" }}>
                 <Card elevation={5}>
                   <CardActionArea>
