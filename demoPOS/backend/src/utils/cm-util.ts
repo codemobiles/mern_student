@@ -21,7 +21,7 @@ export async function deleteFile(name: string) {
 
 export function getFileName(files: any, id: string): string | null {
   if (files.image != null) {
-    var fileExtention = files.image[0].originalFilename.split(".")[1];
+    var fileExtention = files.image.originalFilename.split(".")[1];
     const name = `${id}.${fileExtention}`;
     return name;
   }
@@ -30,7 +30,7 @@ export function getFileName(files: any, id: string): string | null {
 
 export async function uploadImage(files: any, name: string) {
   if (files.image != null) {
-    var oldpath = files.image[0].filepath;
+    var oldpath = files.image.filepath;
     var newpath = uploadPath + name;
 
     if (fs.existsSync(newpath)) {
