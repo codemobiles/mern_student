@@ -24,10 +24,10 @@ export default function useCopyToClipboard(resetInterval: number): useCopyToClip
   //   setCopied(true);
   // }, []);
 
-  const handleCopy = (text: string) => {
+  const handleCopy = React.useCallback((text: string) => {
     copy(text.toString());
     setCopied(true);
-  };
+  },[]);
 
   return [isCopied, handleCopy];
 }
