@@ -1,0 +1,70 @@
+# remove old volumn
+# remove old image first
+# docker-compose up -d --building
+version: "3.5"
+
+services:
+  database:
+    image: mongo:latest
+    container_name: react_database
+    volumes:
+      - cmmongo-volume:/data/db
+    ports:
+      - 27018:27017
+    networks:
+      - reactnetwork
+  database_sh:
+    image: mongo:latest
+    container_name: react_database_sh
+    volumes:
+      - ./dummy_db_cmpos:/dummy_db_cmpos/
+    depends_on:
+      - database
+    networks:
+      - reactnetwork
+    command:
+      - /bin/bash
+      - -c
+      - |
+        sleep 10
+        /usr/bin/mongorestore --host database:27017 -d demopos /dummy_db_cmpos        
+        #sleep infinity
+  backend:
+    build: backend/
+    image: backend-react:1.0
+    container_name: backend-react
+    restart: always
+    environment:
+      - MONGO_HOST=database
+      - MONGO_PORT=27017
+    volumes:
+      - cmreact-volume:/usr/src/app/build/uploaded
+    ports:
+      - 8081:8081
+    depends_on:
+      - database
+    networks:
+      - reactnetwork
+  frontend:
+    build: frontend/
+    image: frontend-react:1.0
+    container_name: frontend-react
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    networks:
+      - reactnetwork
+
+networks:
+  reactnetwork:
+    name: react_workshop
+    driver: bridge
+
+volumes:
+  cmreact-volume:
+    name: cmreact-volume
+    external: false
+  cmmongo-volume:
+    name: cmmongo-volume
+    external: false
