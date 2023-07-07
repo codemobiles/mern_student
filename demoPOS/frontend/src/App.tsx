@@ -91,7 +91,7 @@ export default function App() {
       fontWeightBold: 600,
     },
     palette: {
-      primary: import.meta.env.VITE_IS_PRODUCTION === "1" ? { main: "#C1272D" } : blue,
+      primary: import.meta.env.VITE_IS_PRODUCTION === "1" ? { main: "#0096d3" } : blue,
       background: {
         default: "#B8F4FF33",
       },

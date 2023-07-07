@@ -1,6 +1,8 @@
 # remove old volumn
 # remove old image first
-# docker-compose up -d --building
+# docker-compose up -d --build
+# docker-compose down
+# docker-compose stop/start
 version: "3.5"
 
 services:

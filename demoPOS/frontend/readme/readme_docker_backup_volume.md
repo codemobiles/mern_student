@@ -9,3 +9,5 @@
 docker volume ls
 docker run --rm -v <volume-name>:/backup-volume -v "$(pwd)":/backup busybox tar -zcvf /backup/my-backup.tar.gz /backup-volume
 ```
+
+docker run --rm -v cmreact-volume:/backup-volume -v "$(pwd)":/backup busybox tar -zcvf /backup/my-backup.tar.gz /backup-volume
