@@ -1,0 +1,10 @@
+# docker-compose up -d
+version: "3.5"
+
+services:
+  app:
+    build: '.'
+    image: 'cm_reactjs'
+    container_name: cm_reactjs
+    ports:
+      - 1152:80
