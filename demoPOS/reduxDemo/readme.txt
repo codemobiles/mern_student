@@ -1,0 +1,1 @@
+- yarn add react-redux redux @reduxjs/toolkit
