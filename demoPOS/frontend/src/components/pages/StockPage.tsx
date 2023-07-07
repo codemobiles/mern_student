@@ -263,11 +263,7 @@ const Stock = () => {
 
       <DataGrid
         components={{ Toolbar: QuickSearchToolbar }}
-        sx={{
-          backgroundColor: "white",
-          height: "70vh",
-          "& .MuiDataGrid-cell:focus": { outline: "solid #2196f3 0px" },
-        }}
+        sx={{ "& .MuiDataGrid-cell:focus": { outline: "solid #FF96f3 1px;" } }}
         getRowId={(row) => row.product_id}
         rows={stockReducer.stockAllResult}
         columns={stockColumns}
